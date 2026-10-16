@@ -18,7 +18,7 @@ public class Calculator3 {
 
         double rMonthlyInterestRate = annualRate / 12 / 100;
         int nMonthlyPayments = tNumYearAnnuityPayOut * 12;
-        double powerResult = Math.pow((1 + rMonthlyInterestRate), -nMonthlyPayments);
+        double powerResult = 1- Math.pow((1 + rMonthlyInterestRate), -nMonthlyPayments);
 
         double presentValue = monthlyPayoutAmount * (powerResult / rMonthlyInterestRate);
 

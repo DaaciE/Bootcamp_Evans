@@ -12,10 +12,22 @@ public class Calculator1 {
         System.out.println("Enter Loan aAmount: ");
         long principle = scanner.nextLong();
         System.out.println("Enter Interest Rate: ");
-        double interestRate = scanner.nextDouble();
+        double rAnnualRate = scanner.nextDouble();
         System.out.println("Enter Length of Loan: ");
-        int loanTermInYears = scanner.nextInt();
+        int yLoanLength = scanner.nextInt();
 
+//
+
+
+        double iMonthlyInterest = rAnnualRate / 12 / 100;
+        int numMonthPayment = yLoanLength * 12;
+
+        double MonthlyPayment1 = Math.pow(iMonthlyInterest * (1 +iMonthlyInterest), numMonthPayment);
+        double MonthlyPayment2 = Math.pow()
+
+
+
+        double totalInterest = ( * numMonthPayment) - principle;
 
 
 

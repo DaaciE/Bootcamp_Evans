@@ -20,8 +20,8 @@ public class Calculator1 {
         double iMonthlyInterest = rAnnualRate / 12 / 100;
         int numMonthPayment = yLoanLength * 12;
 
-        double power = Math.pow((1 + iMonthlyInterest) , numMonthPayment);
-        double monthlyPayment = principle * (iMonthlyInterest * power) / (power - 1);
+        double powerResult = Math.pow((1 + iMonthlyInterest) , numMonthPayment);
+        double monthlyPayment = principle * (iMonthlyInterest * powerResult) / (powerResult - 1);
 
         double totalInterest = (monthlyPayment * numMonthPayment) - principle;
 

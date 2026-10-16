@@ -26,6 +26,8 @@ public class Calculator3 {
                 "and earns an expected %.2f interest, you would need to invest\n" +
                 "$%.2f today." ,monthlyPayoutAmount,tNumYearAnnuityPayOut, annualRate, presentValue);
 
+        scanner.close();
+
 
 
     }

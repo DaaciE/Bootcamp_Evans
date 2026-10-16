@@ -6,7 +6,7 @@ public class Calculator2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("-------Compound Interest Calculator-------");
+        System.out.println("-------CD Interest Calculator-------");
 
         System.out.println("Enter Deposit Amount: ");
         int principle = scanner.nextInt();

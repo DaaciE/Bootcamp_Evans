@@ -26,7 +26,7 @@ public class Calculator1 {
         double totalInterest = (monthlyPayment * numMonthPayment) - principle;
 
         System.out.printf("A %d loan at %.2f interest for %d years would have a\n" +
-                "%.2f/mo payment" ,principle, rAnnualRate, yLoanLength, monthlyPayment);
+                "%.2f/mo payment with a total interest of $%.2f" ,principle, rAnnualRate, yLoanLength, monthlyPayment, totalInterest);
 
         scanner.close();
 

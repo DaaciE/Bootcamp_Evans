@@ -3,7 +3,7 @@ package org.example;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
 
         Book[] book = new Book[20];
@@ -29,17 +29,28 @@ public class Main {
         book[18] = new Book(3319, "978-0374533557", "The Stranger", false, "");
         book[19] = new Book(3320, "978-0307387899", "The Road Less Traveled", true, "Olivia Thomas");
 
-       //MENU START
-
+        //MENU START
+        int choice = 0;
         System.out.println("~~~~~~~~~ Davia's Good Reads ~~~~~~~~~");
+        System.out.println("");
+
+        while(true) {
+            Thread.sleep(1000);
+            System.out.println("~~~  MAIN MENU  ~~~");
+            Thread.sleep(1000);
+            System.out.println("1. Show Available Books");
+            Thread.sleep(1000);
+            System.out.println("2. Show Checked Out Books.");
+            Thread.sleep(1000);
+            System.out.println("3. Exit.");
+            Thread.sleep(1000);
+
+            System.out.println("Where Would You Like To Go?");
+            choice = scanner.nextInt();
 
 
-        System.out.println("~~~  MAIN MENU  ~~~");
-        System.out.println("Show Available Books.");
-        System.out.println("Show Checked Out Books.");
-        System.out.println("Exit.");
 
+        }
 
     }
-
 }

@@ -31,6 +31,9 @@ public class Book {
     public boolean getIsCheckedOut() {
         return isCheckedOut;
     }
+    public void setIsCheckedOut(boolean isCheckedOut) {
+        this.isCheckedOut = isCheckedOut;
+    }
 
     public String getCheckedOutTo() {
         return checkedOutTo;
@@ -38,5 +41,16 @@ public class Book {
 
     public void setCheckedOutTo(String checkedOutTo) {
         this.checkedOutTo = checkedOutTo;
+    }
+
+    //custom methods:
+    void checkOut(String name) {
+        setIsCheckedOut(true);
+        setCheckedOutTo(name);
+    }
+    void checkIn() {
+        setIsCheckedOut(false);
+        setCheckedOutTo("");
+
     }
 }

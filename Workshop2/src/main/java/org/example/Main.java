@@ -34,23 +34,34 @@ public class Main {
         System.out.println("~~~~~~~~~ Davia's Good Reads ~~~~~~~~~");
         System.out.println("");
 
-        while(true) {
+        while (true) {
             Thread.sleep(1000);
             System.out.println("~~~  MAIN MENU  ~~~");
             Thread.sleep(1000);
             System.out.println("1. Show Available Books");
-            Thread.sleep(1000);
             System.out.println("2. Show Checked Out Books.");
-            Thread.sleep(1000);
             System.out.println("3. Exit.");
-            Thread.sleep(1000);
+
 
             System.out.println("Where Would You Like To Go?");
             choice = scanner.nextInt();
 
+            //CHOICE 1:
+            if (choice == 1) {
 
+                for(int i = 0; i < book.length; i++){
+
+                    if (book[i].getIsCheckedOut() == false) {
+                        System.out.println("");
+                        System.out.println("TITLE: " + book[i].getTitle());
+                        System.out.println("ID: " + book[i].getId() + ", " + "ISBN: " + book[i].getIsbn() );
+
+                    }
+
+            }
+
+            }
 
         }
-
     }
 }

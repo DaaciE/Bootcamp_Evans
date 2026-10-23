@@ -31,7 +31,7 @@ public class Main {
 
 
         for(int i = 0; i < book.length; i++) {
-            System.out.println(book[i].getIsCheckedOut());
+            System.out.println(book[i].getCheckedOutTo());
         }
 
     }

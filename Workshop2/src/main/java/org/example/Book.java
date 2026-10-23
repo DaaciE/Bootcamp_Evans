@@ -32,8 +32,8 @@ public class Book {
         return isCheckedOut;
     }
 
-    public void getCheckedOut(boolean checkedOut) {
-        isCheckedOut = checkedOut;
+    public String getCheckedOutTo() {
+        return checkedOutTo;
     }
 
     public void setCheckedOutTo(String checkedOutTo) {

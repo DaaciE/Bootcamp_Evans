@@ -28,11 +28,11 @@ public class Book {
         return title;
     }
 
-    public boolean isCheckedOut() {
+    public boolean getIsCheckedOut() {
         return isCheckedOut;
     }
 
-    public void setCheckedOut(boolean checkedOut) {
+    public void getCheckedOut(boolean checkedOut) {
         isCheckedOut = checkedOut;
     }
 

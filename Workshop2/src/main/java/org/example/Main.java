@@ -30,10 +30,11 @@ public class Main {
         book[19] = new Book(20, "978-0307387899", "The Road Less Traveled", true, "Olivia Thomas");
 
 
-
-
-
-
+        for(int i = 0; i < book.length; i++) {
+            System.out.println(book[i].getIsCheckedOut());
+        }
 
     }
+
+
 }

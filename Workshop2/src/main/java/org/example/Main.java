@@ -34,7 +34,6 @@ public class Main {
         System.out.println("\n~~~~~~~~~ Davia's Good Reads ~~~~~~~~~\n");
 
         while (true) {
-            Thread.sleep(1000);
             System.out.println("\n~~~  MAIN MENU  ~~~\n");
             Thread.sleep(1000);
             System.out.println("1. Show Available Books");
@@ -45,67 +44,86 @@ public class Main {
 
             //CHOICE 1:
             if (choice == 1) {
-
+                // SHOWS THE LIST OF BOOKS
+                System.out.println("\n~~~  AVAILABLE BOOKS  ~~~");
                 for (int i = 0; i < book.length; i++) {
-
+                    Thread.sleep(200);
                     if (book[i].getIsCheckedOut() == false) {
-                        System.out.println("");
-                        System.out.println("ID: " + book[i].getId() + ", " + "ISBN: " + book[i].getIsbn() + ", TITLE: " + book[i].getTitle());
-                    }
-
+                    System.out.println("");
+                    System.out.println("ID: " + book[i].getId() + ", " + "ISBN: " + book[i].getIsbn() + ", TITLE: " + book[i].getTitle());
                 }
-                //Checking out BOOK
-                int bookIdChoice = 0;
+            }
 
-                System.out.println("\nAnything tickle your fannnnnnncy?");
-                System.out.println("If so, Enter Book ID to Check Out");
-                bookIdChoice = scanner.nextInt();
-                scanner.nextLine();
+            //CHECKING OUT A BOOK
+            int bookIdChoice = 0;
 
+            System.out.println("\nAnything tickle your fannnnnnncy?");
+            System.out.println("If so, Enter Book ID to Check Out");
+            System.out.println("Otherwise Choose '0'");
+            bookIdChoice = scanner.nextInt();
+            scanner.nextLine();
+
+            // IF THEY DON'T WANT TO CHECK OUT A BOOK
+            if (bookIdChoice == 0) {
+                System.out.println("Returning to Main Menu!");
+
+
+                //IF THEY DO WANT TO CHECK OUT A BOOK AND ID MATCHES
+            } else {
                 for (int i = 0; i < book.length; i++) {
-                    //IF ID MATCHES:
-                    if (bookIdChoice == 0){
-                        System.out.println("See You Next Time!");
-                        break;
-                    }
-
-                    else if (book[i].getId() == bookIdChoice) {
+                    if (book[i].getId() == bookIdChoice) {
                         System.out.println("Whose the Reader?");
                         String fullName = scanner.nextLine();
 
                         book[i].checkOut(fullName);
                         System.out.println("\nYayyy! You did it");
                         System.out.println("Enjoy " + book[i].getTitle() + ", " + fullName);
+                        System.out.println("");
+
                     }
-
-
-
                 }
+            }
+        }
+
+
                 //CHOICE 2
-
                 if (choice == 2) {
+                    // SHOWS THE LIST OF BOOKS
+                    System.out.println("~~~  UNAVAILABLE BOOKS  ~~~");
                     for (int i = 0; i < book.length; i++) {
-
+                        Thread.sleep(200);
                         if (book[i].getIsCheckedOut() == true) {
                             System.out.println("");
                             System.out.println("ID: " + book[i].getId() + ", " + "ISBN: " + book[i].getIsbn() + ", TITLE: " + book[i].getTitle());
-                            System.out.println("Checked out by, " + book[i].getCheckedOutTo());
+                            System.out.println("Checked out by: " + book[i].getCheckedOutTo());
                         }
                     }
 
-                }
+
+
+
+
+
+
 
 
                 }
 
-            //CHOICE 3
+
+
+
+
+
+                //CHOICE 3
             if (choice == 3) {
-                System.out.println("See you soon!");
+                System.out.println("See you Soon!");
                 break;
             }
-            }
 
 
-        }
+            }//while loop ending curly brace
 
-    }
+        }//main ending curly brace
+
+    }//public class ending curly brace
+

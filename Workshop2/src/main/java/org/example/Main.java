@@ -46,56 +46,66 @@ public class Main {
             //CHOICE 1:
             if (choice == 1) {
 
-                for(int i = 0; i < book.length; i++){
+                for (int i = 0; i < book.length; i++) {
 
                     if (book[i].getIsCheckedOut() == false) {
                         System.out.println("");
                         System.out.println("ID: " + book[i].getId() + ", " + "ISBN: " + book[i].getIsbn() + ", TITLE: " + book[i].getTitle());
-
                     }
 
-            }
+                }
+                //Checking out BOOK
                 int bookIdChoice = 0;
 
                 System.out.println("\nAnything tickle your fannnnnnncy?");
-                System.out.println("If so, Please Enter the Book Id:");
+                System.out.println("If so, Enter Book ID to Check Out");
                 bookIdChoice = scanner.nextInt();
                 scanner.nextLine();
 
-                 for (int i = 0; i < book.length; i++) {
-                     if (book[i].getId() == bookIdChoice) {
-                         System.out.println("Who is Checking this out?");
-                         String fullName = scanner.nextLine();
-
-                     }
-                 }
-
-
-
-
-            }
-
-
-            //CHOICE 2
-
-            if (choice == 2) {
-                for(int i = 0; i < book.length; i++) {
-
-                    if(book[i].getIsCheckedOut() == true) {
-                        System.out.println("");
-                        System.out.println("ID: " + book[i].getId() + ", " + "ISBN: " + book[i].getIsbn() + ", TITLE: " + book[i].getTitle());
-                        System.out.println("Checked out by, " + book[i].getCheckedOutTo());
+                for (int i = 0; i < book.length; i++) {
+                    //IF ID MATCHES:
+                    if (bookIdChoice == 0){
+                        System.out.println("See You Next Time!");
+                        break;
                     }
+
+                    else if (book[i].getId() == bookIdChoice) {
+                        System.out.println("Whose the Reader?");
+                        String fullName = scanner.nextLine();
+
+                        book[i].checkOut(fullName);
+                        System.out.println("\nYayyy! You did it");
+                        System.out.println("Enjoy " + book[i].getTitle() + ", " + fullName);
+                    }
+
+
+
+                }
+                //CHOICE 2
+
+                if (choice == 2) {
+                    for (int i = 0; i < book.length; i++) {
+
+                        if (book[i].getIsCheckedOut() == true) {
+                            System.out.println("");
+                            System.out.println("ID: " + book[i].getId() + ", " + "ISBN: " + book[i].getIsbn() + ", TITLE: " + book[i].getTitle());
+                            System.out.println("Checked out by, " + book[i].getCheckedOutTo());
+                        }
+                    }
+
                 }
 
-            }
+
+                }
 
             //CHOICE 3
-        if( choice == 3) {
-            System.out.println("See you soon!");
-            break;
-        }
+            if (choice == 3) {
+                System.out.println("See you soon!");
+                break;
+            }
+            }
+
 
         }
+
     }
-}

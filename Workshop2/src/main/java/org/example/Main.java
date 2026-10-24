@@ -31,18 +31,15 @@ public class Main {
 
         //MENU START
         int choice = 0;
-        System.out.println("~~~~~~~~~ Davia's Good Reads ~~~~~~~~~");
-        System.out.println("");
+        System.out.println("\n~~~~~~~~~ Davia's Good Reads ~~~~~~~~~\n");
 
         while (true) {
             Thread.sleep(1000);
-            System.out.println("~~~  MAIN MENU  ~~~");
+            System.out.println("\n~~~  MAIN MENU  ~~~\n");
             Thread.sleep(1000);
             System.out.println("1. Show Available Books");
             System.out.println("2. Show Checked Out Books.");
-            System.out.println("3. Exit.");
-
-
+            System.out.println("3. Exit.\n");
             System.out.println("Where Would You Like To Go?");
             choice = scanner.nextInt();
 
@@ -53,14 +50,51 @@ public class Main {
 
                     if (book[i].getIsCheckedOut() == false) {
                         System.out.println("");
-                        System.out.println("TITLE: " + book[i].getTitle());
-                        System.out.println("ID: " + book[i].getId() + ", " + "ISBN: " + book[i].getIsbn() );
+                        System.out.println("ID: " + book[i].getId() + ", " + "ISBN: " + book[i].getIsbn() + ", TITLE: " + book[i].getTitle());
 
                     }
 
             }
+                int bookIdChoice = 0;
+
+                System.out.println("\nAnything tickle your fannnnnnncy?");
+                System.out.println("If so, Please Enter the Book Id:");
+                bookIdChoice = scanner.nextInt();
+                scanner.nextLine();
+
+                 for (int i = 0; i < book.length; i++) {
+                     if (book[i].getId() == bookIdChoice) {
+                         System.out.println("Who is Checking this out?");
+                         String fullName = scanner.nextLine();
+
+                     }
+                 }
+
+
+
 
             }
+
+
+            //CHOICE 2
+
+            if (choice == 2) {
+                for(int i = 0; i < book.length; i++) {
+
+                    if(book[i].getIsCheckedOut() == true) {
+                        System.out.println("");
+                        System.out.println("ID: " + book[i].getId() + ", " + "ISBN: " + book[i].getIsbn() + ", TITLE: " + book[i].getTitle());
+                        System.out.println("Checked out by, " + book[i].getCheckedOutTo());
+                    }
+                }
+
+            }
+
+            //CHOICE 3
+        if( choice == 3) {
+            System.out.println("See you soon!");
+            break;
+        }
 
         }
     }

@@ -41,6 +41,7 @@ public class Main {
             System.out.println("3. Exit.\n");
             System.out.println("Where Would You Like To Go?");
             choice = scanner.nextInt();
+            scanner.nextLine();
 
             //CHOICE 1:
             if (choice == 1) {
@@ -66,24 +67,25 @@ public class Main {
             // IF THEY DON'T WANT TO CHECK OUT A BOOK
             if (bookIdChoice == 0) {
                 System.out.println("Returning to Main Menu!");
+            }
 
-
-                //IF THEY DO WANT TO CHECK OUT A BOOK AND ID MATCHES
-            } else {
+            //IF THEY DO WANT TO CHECK OUT A BOOK AND ID MATCHES
+            else {
                 for (int i = 0; i < book.length; i++) {
                     if (book[i].getId() == bookIdChoice) {
                         System.out.println("Whose the Reader?");
                         String fullName = scanner.nextLine();
 
                         book[i].checkOut(fullName);
-                        System.out.println("\nYayyy! You did it");
+                        System.out.println("\nDavia Approves!");
                         System.out.println("Enjoy " + book[i].getTitle() + ", " + fullName);
-                        System.out.println("");
+                        System.out.println("~~~~~~  Press Enter to Return to Main Menu  ~~~~~~");
+                        scanner.nextLine();
 
                     }
                 }
             }
-        }
+        }//choice one ending curly brace
 
 
                 //CHOICE 2
@@ -98,16 +100,41 @@ public class Main {
                             System.out.println("Checked out by: " + book[i].getCheckedOutTo());
                         }
                     }
+                    //CHECKING IN A BOOK
+                    int bookIdReturn = 0;
+
+                    System.out.println("\nChecking in a Book?");
+                    System.out.println("press 'C' to Check In or 'X' to Return to the Main Menu");
+                    String checkInChoice = scanner.nextLine();
+
+                    if(checkInChoice.equalsIgnoreCase("C")) {
+                        System.out.println("Please Input Book ID");
+                        bookIdReturn = scanner.nextInt();
+                        scanner.nextLine();
+
+                        for (int i = 0; i < book.length; i++) {
+                            if (book[i].getId() == bookIdReturn) {
+                                book[i].checkIn();
+                                System.out.println("Check In Complete");
+
+                            }
+
+
+                        }
+
+                    }
+                    else if(checkInChoice.equalsIgnoreCase("X")) {
+                            System.out.println("Returning to Main Menu");
+                    }
+                    else {
+                        System.out.println("Invalid Choice, Please try Again");
+                    }
 
 
 
 
 
-
-
-
-
-                }
+                }//choice 2 ending curly price
 
 
 

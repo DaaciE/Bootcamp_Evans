@@ -102,32 +102,41 @@ public class Main {
                     }
                     //CHECKING IN A BOOK
                     int bookIdReturn = 0;
+                    boolean validChoice = false;
 
-                    System.out.println("\nChecking in a Book?");
-                    System.out.println("press 'C' to Check In or 'X' to Return to the Main Menu");
-                    String checkInChoice = scanner.nextLine();
+                    for(int j = 0; j < 3; j++) {
+                        System.out.println("\nChecking in a Book?");
+                        System.out.println("press 'C' to Check In or 'X' to Return to the Main Menu");
+                        String checkInChoice = scanner.nextLine();
 
-                    if(checkInChoice.equalsIgnoreCase("C")) {
-                        System.out.println("Please Input Book ID");
-                        bookIdReturn = scanner.nextInt();
-                        scanner.nextLine();
+                          if (checkInChoice.equalsIgnoreCase("C")) {
+                            validChoice = true;
+                            System.out.println("Please Input Book ID");
+                            bookIdReturn = scanner.nextInt();
+                            scanner.nextLine();
 
-                        for (int i = 0; i < book.length; i++) {
-                            if (book[i].getId() == bookIdReturn) {
-                                book[i].checkIn();
-                                System.out.println("Check In Complete");
+                            for (int i = 0; i < book.length; i++) {
+                                if (book[i].getId() == bookIdReturn) {
+                                    book[i].checkIn();
+                                    System.out.println("Check In Complete");
+                                    System.out.println("Returning to Main Menu!");
 
+                                }
                             }
-
-
-                        }
-
-                    }
-                    else if(checkInChoice.equalsIgnoreCase("X")) {
+                        } else if (checkInChoice.equalsIgnoreCase("X")) {
+                            validChoice = true;
                             System.out.println("Returning to Main Menu");
-                    }
-                    else {
-                        System.out.println("Invalid Choice, Please try Again");
+
+                        } else {
+                            if (j == 2) {
+                                System.out.println("GoodBye!");
+                            } else {
+                                System.out.println("Invalid Choice, Please try Again");
+                            }
+                        }
+                        if (validChoice) {
+                            break;
+                        }
                     }
 
 

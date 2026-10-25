@@ -50,40 +50,44 @@ public class Main {
                 for (int i = 0; i < book.length; i++) {
                     Thread.sleep(200);
                     if (book[i].getIsCheckedOut() == false) {
-                    System.out.println("");
-                    System.out.println("ID: " + book[i].getId() + ", " + "ISBN: " + book[i].getIsbn() + ", TITLE: " + book[i].getTitle());
-                }
-            }
-
-            //CHECKING OUT A BOOK
-            int bookIdChoice = 0;
-
-            System.out.println("\nAnything tickle your fannnnnnncy?");
-            System.out.println("If so, Enter Book ID to Check Out");
-            System.out.println("Otherwise Choose '0'");
-            bookIdChoice = scanner.nextInt();
-            scanner.nextLine();
-
-            // IF THEY DON'T WANT TO CHECK OUT A BOOK
-            if (bookIdChoice == 0) {
-                System.out.println("Returning to Main Menu!");
-            }
-
-            //IF THEY DO WANT TO CHECK OUT A BOOK AND ID MATCHES
-            else {
-                for (int i = 0; i < book.length; i++) {
-                    if (book[i].getId() == bookIdChoice) {
-                        System.out.println("Whose the Reader?");
-                        String fullName = scanner.nextLine();
-
-                        book[i].checkOut(fullName);
-                        System.out.println("\nDavia Approves!");
-                        System.out.println("Enjoy " + book[i].getTitle() + ", " + fullName);
-                        System.out.println("~~~~~~  Press Enter to Return to Main Menu  ~~~~~~");
-                        scanner.nextLine();
-
+                        System.out.println("");
+                        System.out.println("ID: " + book[i].getId() + ", " + "ISBN: " + book[i].getIsbn() + ", TITLE: " + book[i].getTitle());
                     }
                 }
+
+                //CHECKING OUT A BOOK
+                int bookIdChoice = 0;
+
+                System.out.println("\nAnything tickle your fannnnnnncy?");
+                System.out.println("If so, Enter Book ID to Check Out");
+                System.out.println("Otherwise Choose '0' to Return to Main Menu");
+                String bookIdInput = scanner.nextLine();
+                bookIdChoice = Integer.parseInt(bookIdInput);
+
+                // IF THEY DON'T WANT TO CHECK OUT A BOOK
+                for(int j = 0; j < 3; j++) {
+
+                if (bookIdChoice == 0) {
+                    System.out.println("Returning to Main Menu!");
+                }
+
+                //IF THEY DO WANT TO CHECK OUT A BOOK AND ID MATCHES
+                else {
+                    for (int i = 0; i < book.length; i++) {
+                        if (book[i].getId() == bookIdChoice) {
+                            System.out.println("Whose the Reader?");
+                            String fullName = scanner.nextLine();
+
+                            book[i].checkOut(fullName);
+                            System.out.println("\nDavia Approves!");
+                            System.out.println("Enjoy " + book[i].getTitle() + ", " + fullName);
+                            System.out.println("~~~~~~  Press Enter to Return to Main Menu  ~~~~~~");
+                            scanner.nextLine();
+
+                        }
+                    }
+                }
+                break;
             }
         }//choice one ending curly brace
 
@@ -109,7 +113,7 @@ public class Main {
                         System.out.println("press 'C' to Check In or 'X' to Return to the Main Menu");
                         String checkInChoice = scanner.nextLine();
 
-                          if (checkInChoice.equalsIgnoreCase("C")) {
+                        if (checkInChoice.equalsIgnoreCase("C")) {
                             validChoice = true;
                             System.out.println("Please Input Book ID");
                             bookIdReturn = scanner.nextInt();
@@ -139,16 +143,7 @@ public class Main {
                         }
                     }
 
-
-
-
-
                 }//choice 2 ending curly price
-
-
-
-
-
 
                 //CHOICE 3
             if (choice == 3) {

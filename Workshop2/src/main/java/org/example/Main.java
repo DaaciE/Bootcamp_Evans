@@ -58,11 +58,11 @@ public class Main {
                 //CHECKING OUT A BOOK
                 int bookIdChoice = 0;
                 boolean validChoice = false;
-                boolean bookFound = false;
 
-                System.out.println("\nAnything tickle your fannnnnnncy?");
+                System.out.println("\nAnything tickle your fannnnnnncy?\n");
 
                 for(int j = 0; j < 3; j++) {
+                    boolean bookFound = false;
                 System.out.println("Enter Book ID to Check Out");
                 System.out.println("Otherwise Choose '0' to Return to Main Menu");
                 String bookIdInput = scanner.nextLine();
@@ -84,6 +84,7 @@ public class Main {
                             String fullName = scanner.nextLine();
 
                             book[i].checkOut(fullName);
+
                             System.out.println("\nDavia Approves!");
                             System.out.println("Enjoy " + book[i].getTitle() + ", " + fullName);
                             System.out.println("~~~~~~  Press Enter to Return to Main Menu  ~~~~~~");
@@ -92,7 +93,16 @@ public class Main {
                             validChoice = true;
                         }
                     }
+                    //CHECK WHETHER THE BOOK WAS FOUND
+                    if (j == 2 && bookFound == false) {
+                        System.out.println("GoodBye!");
+                    }
+                    else if (j < 2 && bookFound == false ) {
+                        System.out.println("Sorry! We don't have this book.\nTry again!\n");
+                    }
+                    else {
 
+                    }
                 }
                 if(validChoice) {
                     break;
@@ -143,7 +153,8 @@ public class Main {
                         } else {
                             if (j == 2) {
                                 System.out.println("GoodBye!");
-                            } else {
+                            }
+                            else {
                                 System.out.println("Invalid Choice, Please try Again");
                             }
                         }

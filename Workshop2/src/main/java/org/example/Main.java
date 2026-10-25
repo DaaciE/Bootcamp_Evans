@@ -57,17 +57,20 @@ public class Main {
 
                 //CHECKING OUT A BOOK
                 int bookIdChoice = 0;
+                boolean validChoice = false;
+                boolean bookFound = false;
 
                 System.out.println("\nAnything tickle your fannnnnnncy?");
-                System.out.println("If so, Enter Book ID to Check Out");
+
+                for(int j = 0; j < 3; j++) {
+                System.out.println("Enter Book ID to Check Out");
                 System.out.println("Otherwise Choose '0' to Return to Main Menu");
                 String bookIdInput = scanner.nextLine();
                 bookIdChoice = Integer.parseInt(bookIdInput);
 
-                // IF THEY DON'T WANT TO CHECK OUT A BOOK
-                for(int j = 0; j < 3; j++) {
 
                 if (bookIdChoice == 0) {
+                    validChoice = true;
                     System.out.println("Returning to Main Menu!");
                 }
 
@@ -75,6 +78,8 @@ public class Main {
                 else {
                     for (int i = 0; i < book.length; i++) {
                         if (book[i].getId() == bookIdChoice) {
+                            bookFound = true;
+
                             System.out.println("Whose the Reader?");
                             String fullName = scanner.nextLine();
 
@@ -84,10 +89,14 @@ public class Main {
                             System.out.println("~~~~~~  Press Enter to Return to Main Menu  ~~~~~~");
                             scanner.nextLine();
 
+                            validChoice = true;
                         }
                     }
+
                 }
-                break;
+                if(validChoice) {
+                    break;
+                }
             }
         }//choice one ending curly brace
 

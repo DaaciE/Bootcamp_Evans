@@ -47,12 +47,19 @@ public class Main {
             if (choice == 1) {
                 // SHOWS THE LIST OF BOOKS
                 System.out.println("\n~~~  AVAILABLE BOOKS  ~~~");
+
+            try {
                 for (int i = 0; i < book.length; i++) {
                     Thread.sleep(200);
                     if (book[i].getIsCheckedOut() == false) {
                         System.out.println("");
                         System.out.println("ID: " + book[i].getId() + ", " + "ISBN: " + book[i].getIsbn() + ", TITLE: " + book[i].getTitle());
                     }
+                }
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            } {
+                    System.out.println("Invalid choice, Please choose the options");
                 }
 
                 //CHECKING OUT A BOOK
@@ -99,9 +106,6 @@ public class Main {
                     }
                     else if (j < 2 && bookFound == false ) {
                         System.out.println("Sorry! We don't have this book.\nTry again!\n");
-                    }
-                    else {
-
                     }
                 }
                 if(validChoice) {

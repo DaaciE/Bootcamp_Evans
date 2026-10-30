@@ -14,7 +14,7 @@ public class FileManager {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             String row;
-
+            bufferedReader.readLine();
             while ((row = bufferedReader.readLine()) != null) {
                 String[] brokenUpRow = row.split("\\|");
                 String sku = brokenUpRow[0]; //change to an integer
@@ -29,8 +29,10 @@ public class FileManager {
 
         } catch (IOException ex) {
             System.out.println("Trouble reading file. Check your file.");
+            //ex.printStackTrace();
         } catch (Exception ex) {
             System.out.println("...");
+            //ex.printStackTrace();
         }
         return productList;
     }

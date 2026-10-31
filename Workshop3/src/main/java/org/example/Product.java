@@ -17,7 +17,6 @@ public class Product {
         return sku;
     }
 
-
     public String getClothingItem() {
         return clothingItem;
     }

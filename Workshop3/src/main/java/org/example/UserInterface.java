@@ -17,48 +17,87 @@ public class UserInterface {
     public void DisplayHomeScreen() {
         // Main menu
         Scanner scanner = new Scanner(System.in);
-        int userInput = -1;
+        String userInput = "";
 
-        while (userInput != 3) {
+        while (!userInput.equals("3")) {
             System.out.println("===== THEORIES =====");
             System.out.println("1) Our Closet ");
             System.out.println("2) CART");
             System.out.println("3) Exit");
-
-            try {
-                userInput = Integer.parseInt(scanner.nextLine());
-            } catch (InputMismatchException ex) {
-                System.out.println("Wrong Data Type.\n");
-            } catch (NumberFormatException ex) {
-                System.out.println(" Incorrect Number Format.\n");
-            } catch (Exception ex) {
-                System.out.println("Error.\n");
-            }
+            userInput = scanner.nextLine();
 
             switch (userInput) {
-                case 1:
+                case "1":
                     //Display clothing items and search through them
                     displayClosetMenu();
                     break;
 
-
-                case 2:
+                case "2":
                     // Cart menu
 
                     break;
 
-                case 3:
+                case "3":
                     System.out.println("Goodbye!");
                     break;
 
                 default:
                     System.out.println("Please Choose Valid Option.\n");
+                    break;
             }
 
         }
     }
 
 
+
+    private void displayClosetMenu() {
+        // Ask which search method they want
+        Scanner scanner = new Scanner(System.in);
+        String closetInput = "";
+
+        while (!closetInput.equals("3")) {
+            System.out.println("======== THE DETAILS BEHIND THE THEORY ========");
+            System.out.println("1) OUT ENTIRE CLOSET ");
+            System.out.println("2) SEARCH");
+            System.out.println("2) Back to Closet");
+            closetInput = scanner.nextLine();
+
+
+            switch (closetInput) {
+                case "1":
+                    System.out.println("\n======== PUT YOUR TINFOIL HAT ON ========\n");
+                    displayProducts();
+                    break;
+
+                case "2":
+                    System.out.println("======== FIND THE THEORY THAT FITS ========");
+
+                    System.out.printf("What are you searching for?:");
+                    closetInput = scanner.nextLine();
+                    if(closetInput ){
+                        searchByName(productList, closetInput);
+                }
+                    else if () {
+                        searchBySku(productList, closetInput);
+                    } else if(){
+                        searchByDepartment();
+                    }
+
+
+
+
+
+
+                case "3":
+                    System.out.println("");
+                    break;
+                default:
+                    System.out.println("Please Choose Valid Option.\n");
+
+            }
+        }
+    }
     private void displayProducts() {
         // Display all products
         System.out.println("=====Our Products=====");
@@ -70,63 +109,52 @@ public class UserInterface {
 
         }
     }
+    private void searchByName(List<Product> productList, String clothingItem) {
+        // Search by product name
+        for (Product product : productList) {
+            if (product.getClothingItem().equalsIgnoreCase(clothingItem)) {
+                System.out.println("YOUR FINDINGS, COLLECTED!");
+                System.out.printf("%s| (%s) %s", product.getCategory(), product.getSku(), product.getClothingItem());
+                System.out.println("");
 
-    private void displayClosetMenu() {
-        // Ask which search method they want
-        Scanner scanner = new Scanner(System.in);
-        int closetInput = -1;
-
-        while (closetInput != 3) {
-            System.out.println("======== THE DETAILS BEHIND THE THEORY ========");
-            System.out.println("1) Our Entire Closet");
-            System.out.println("2) Search");
-            System.out.println("3) Back to Closet");
-
-            try {
-                closetInput = Integer.parseInt(scanner.nextLine());
-            }
-            catch (InputMismatchException ex) {
-                System.out.println("Wrong Data Type.");
-            }
-            catch (NumberFormatException ex) {
-                System.out.println(" Incorrect Number Format.");
-            }
-            catch (Exception ex) {
-                System.out.println("Error.");
-            }
-
-            switch (closetInput) {
-                case 1:
-                    System.out.println("\n======== PUT YOUR TINFOIL HAT ON ========");
-                    displayProducts();
-                    break;
-
-                case 2:
-                    System.out.println("======== FIND THE THEORY THAT FITS ========");
-
-
-
-
-                case 3:
-                    break;
-                default:
-                    System.out.println("Please Choose Valid Option.\n");
+                return;
             }
         }
+        System.out.println("FINDINGS DEBUNKED!");
     }
 
+    private void searchBySku(List<Product> productList, String sku) {
+        // Search by SKU
+        for (Product product : productList) {
+            if (product.getSku().equalsIgnoreCase(sku)) {
+                System.out.println("YOUR FINDINGS, COLLECTED!");
+                System.out.printf("%s| (%s) %s", product.getCategory(), product.getSku(), product.getClothingItem());
+                System.out.println("");
 
-        private void searchByName () {
-            // Search by product name
+                return;
+            }
         }
-
-        private void searchByDepartment () {
-            // Search by SKU
-
-        }
-
-        private void searchBySku () {
-            // Search by price range
-        }
-
+        System.out.println("FINDINGS DEBUNKED!");
     }
+
+    private void searchByDepartment(List<Product> productList, String category) {
+        // Search by Department
+        boolean found = false;
+
+        for (Product product : productList) {
+            if (product.getCategory().equalsIgnoreCase(category)) {
+                found = true;
+                System.out.println("YOUR FINDINGS, COLLECTED!");
+                System.out.printf("%s| (%s) %s", product.getCategory(), product.getSku(), product.getClothingItem());
+                System.out.println("");
+            }
+        }
+        if(!found) {
+            System.out.println("FINDINGS DEBUNKED!");
+        }
+    }
+}
+
+
+
+

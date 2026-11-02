@@ -14,8 +14,9 @@ public class Main {
 
         System.out.println("============ EVERYDAY THEORY ============");
         System.out.println("~~provocative and gets the people going~~\n");
+
         ui.DisplayHomeScreen();
 
 
     }
-} //
+}

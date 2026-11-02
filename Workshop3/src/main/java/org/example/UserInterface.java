@@ -71,18 +71,37 @@ public class UserInterface {
                     break;
 
                 case "2":
-                    System.out.println("======== FIND THE THEORY THAT FITS ========");
+                    String searchInput = "";
+                    System.out.println("======== FIND THE THEORY THAT FITS ========\n");
 
-                    System.out.printf("What are you searching for?:");
-                    closetInput = scanner.nextLine();
-                    if(closetInput ){
-                        searchByName(productList, closetInput);
-                }
-                    else if () {
-                        searchBySku(productList, closetInput);
-                    } else if(){
-                        searchByDepartment();
+                    System.out.printf("How would you like to search:");
+                    System.out.println("Your options are: ");
+                    System.out.println("1) Search by Name");
+                    System.out.println("2) Search by Sku");
+                    System.out.println("3) Search by Department");
+                    System.out.println("4) Return to Closet");
+                    searchInput = scanner.nextLine();
+
+                    switch (searchInput){
+                        case "1":
+                            searchByName(productList, searchInput);
+                            break;
+
+                        case "2":
+                            searchBySku(productList, searchInput);
+                            break;
+
+                        case "3":
+                            searchByDepartment(productList, searchInput);
+                            break;
+
+                        case "4":
+                            System.out.println("");
+
+                        default:
+                            System.out.println();
                     }
+
 
 
 
@@ -111,6 +130,7 @@ public class UserInterface {
     }
     private void searchByName(List<Product> productList, String clothingItem) {
         // Search by product name
+        boolean found = false;
         for (Product product : productList) {
             if (product.getClothingItem().equalsIgnoreCase(clothingItem)) {
                 System.out.println("YOUR FINDINGS, COLLECTED!");
@@ -120,40 +140,46 @@ public class UserInterface {
                 return;
             }
         }
-        System.out.println("FINDINGS DEBUNKED!");
-    }
-
-    private void searchBySku(List<Product> productList, String sku) {
-        // Search by SKU
-        for (Product product : productList) {
-            if (product.getSku().equalsIgnoreCase(sku)) {
-                System.out.println("YOUR FINDINGS, COLLECTED!");
-                System.out.printf("%s| (%s) %s", product.getCategory(), product.getSku(), product.getClothingItem());
-                System.out.println("");
-
-                return;
-            }
-        }
-        System.out.println("FINDINGS DEBUNKED!");
-    }
-
-    private void searchByDepartment(List<Product> productList, String category) {
-        // Search by Department
-        boolean found = false;
-
-        for (Product product : productList) {
-            if (product.getCategory().equalsIgnoreCase(category)) {
-                found = true;
-                System.out.println("YOUR FINDINGS, COLLECTED!");
-                System.out.printf("%s| (%s) %s", product.getCategory(), product.getSku(), product.getClothingItem());
-                System.out.println("");
-            }
-        }
-        if(!found) {
+        if (!found) {
             System.out.println("FINDINGS DEBUNKED!");
         }
     }
-}
+
+        private void searchBySku (List < Product > productList, String sku) {
+            // Search by SKU
+            boolean found = true;
+            for (Product product : productList) {
+                if (product.getSku().equalsIgnoreCase(sku)) {
+                    System.out.println("YOUR FINDINGS, COLLECTED!");
+                    System.out.printf("%s| (%s) %s", product.getCategory(), product.getSku(), product.getClothingItem());
+                    System.out.println("");
+
+                    return;
+                }
+            }
+            if (!found) {
+                System.out.println("FINDINGS DEBUNKED!");
+            }
+        }
+
+            private void searchByDepartment (List < Product > productList, String category) {
+                // Search by Department
+                boolean found = false;
+
+                for (Product product : productList) {
+                    if (product.getCategory().equalsIgnoreCase(category)) {
+                        found = true;
+                        System.out.println("YOUR FINDINGS, COLLECTED!");
+                        System.out.printf("%s| (%s) %s", product.getCategory(), product.getSku(), product.getClothingItem());
+                        System.out.println("");
+                    }
+                }
+                if (!found) {
+                    System.out.println("FINDINGS DEBUNKED!");
+                }
+            }
+            }
+
 
 
 

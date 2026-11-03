@@ -47,7 +47,7 @@ public class TheGoodAccount {
             System.out.println("L - View Ledger");
             System.out.println("X = Exit");
 
-            userInput = scanner.nextLine().toUpperCase();
+            userInput = scanner.nextLine().trim().toUpperCase();
 
             switch (userInput) {
                 case "D":
@@ -59,10 +59,10 @@ public class TheGoodAccount {
                     break;
 
                 case "L":
-
+                    displayLedger(scanner);
 
                 case "X":
-                    System.out.println("Take it sleazy!");
+                    System.out.println("Until next time, remember: everything is fine. Probably.");
                     break;
 
                 default:
@@ -106,39 +106,48 @@ public class TheGoodAccount {
     private static void displayLedger(Scanner scanner) {
         List<Transaction> transactions = FileManager.readTransaction();
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
-        String ledgerInput = scanner.nextLine();
 
-        System.out.println("Hi There! I'm Janet, How Can I Help You?");
-        System.out.println("A - All Transactions");
-        System.out.println("D - Make Payment");
-        System.out.println("P - Payments");
-        System.out.println("R - Reports");
-        System.out.println("H = Exit");
+        System.out.println("\nHi There! I'm Janet, How Can I Help You?");
 
+        while (true) {
+            System.out.println("\nA - All Transactions");
+            System.out.println("D - Deposits");
+            System.out.println("P - Payments");
+            System.out.println("R - Reports");
+            System.out.println("H = Home");
+            String ledgerInput = scanner.nextLine().trim().toUpperCase();
 
-        switch (ledgerInput) {
-            case "A":
-                for(Transaction t : transactions) {
-                    System.out.printf("%s | %s | %s | %s | %.2f%n",
-                            t.getDate(),
-                            t.getTime().format(timeFormat),
-                            t.getDescription(),
-                            t.getVendor(),
-                            t.getAmount());
+            switch (ledgerInput) {
+                case "A":
+                    for (Transaction t : transactions) {
+                        System.out.printf("%s | %s | %s | %s | %.2f%n",
+                                t.getDate(),
+                                t.getTime().format(timeFormat),
+                                t.getDescription(),
+                                t.getVendor(),
+                                t.getAmount());
+                    }
+                    break;
 
-                }
-                break;
+                case "D":
+                    break;
 
-            case "D":
-            case "P":
-            case "R":
-            case "H":
+                case "P":
+                    break;
 
-            default:
-                System.out.println("Oh, fork! That's not an option.");
-                break;
+                case "R":
+                    break;
+
+                case "H":
+                    System.out.println("Wonderful choice! Returning you to the home screen.");
+                    return;
+
+                default:
+                    System.out.println("Oh, fork! That's not an option.");
+                    break;
+            }
+
         }
-
     }
 }
 

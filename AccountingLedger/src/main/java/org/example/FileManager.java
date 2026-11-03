@@ -38,10 +38,10 @@ public class FileManager {
 
         } catch (IOException ex) {
             System.out.println("Trouble reading file. Check your file.");
-            //ex.printStackTrace();
+            ex.printStackTrace();
         } catch (Exception ex) {
-            System.out.println("...");
-            //ex.printStackTrace();
+            System.out.println("An unexpected error occurred while reading transactions.");
+            ex.printStackTrace();
         }
         return transactionList;
     }

@@ -38,9 +38,6 @@ public class Transaction {
         return amount;
     }
 
-    //METHODS
-
-
 }
 
 

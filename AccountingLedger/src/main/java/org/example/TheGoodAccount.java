@@ -34,9 +34,14 @@ public class TheGoodAccount {
         String userInput = "";
 
 
+
+        System.out.println("             .        *");
+        System.out.println("        .        .");
+        System.out.println("           \\  |  /");
+        System.out.println("        ---  ( )  ---");
         System.out.println("________THE GOOD ACCOUNT________");
         System.out.println("Your finances are in good hands\n");
-        Thread.sleep(1000);
+        Thread.sleep(500);
 
         while (!userInput.equals("X")) {
             System.out.println("\nWelcome to the Good Account!");
@@ -60,6 +65,7 @@ public class TheGoodAccount {
 
                 case "L":
                     displayLedger(scanner);
+                    break;
 
                 case "X":
                     System.out.println("Until next time, remember: everything is fine. Probably.");
@@ -110,7 +116,8 @@ public class TheGoodAccount {
         System.out.println("\nHi There! I'm Janet, How Can I Help You?");
 
         while (true) {
-            System.out.println("\nA - All Transactions");
+            System.out.println("YOUR LEDGER OPTIONS");
+            System.out.println("A - All Transactions");
             System.out.println("D - Deposits");
             System.out.println("P - Payments");
             System.out.println("R - Reports");
@@ -119,6 +126,7 @@ public class TheGoodAccount {
 
             switch (ledgerInput) {
                 case "A":
+                    System.out.println("______________________TRANSACTIONS______________________\n");
                     for (Transaction t : transactions) {
                         System.out.printf("%s | %s | %s | %s | %.2f%n",
                                 t.getDate(),
@@ -136,6 +144,7 @@ public class TheGoodAccount {
                     break;
 
                 case "R":
+                    displayReports(scanner);
                     break;
 
                 case "H":
@@ -149,5 +158,59 @@ public class TheGoodAccount {
 
         }
     }
-}
+
+    private static void displayReports(Scanner scanner){
+        List<Transaction> transactions = FileManager.readTransaction();
+        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        System.out.println("\nWonderful choice! I've got that right here.");
+
+        while (true){
+            System.out.println("YOUR REPORT OPTIONS");
+            System.out.println("1 - Month to Date");
+            System.out.println("2 - Previous Month");
+            System.out.println("3 - Year To Date");
+            System.out.println("4 - Previous Year");
+            System.out.println("5 - Search by Vendor");
+            System.out.println("0 - Ledger Menu");
+            String reportInput = scanner.nextLine().trim();
+
+            switch (reportInput){
+
+                case "1":
+                    System.out.println("\nWonderful choice! I've got that right here.");
+                    break;
+
+                case "2":
+                    System.out.println("\nWonderful choice! I've got that right here.");
+                    break;
+
+                case "3":
+                    System.out.println("\nWonderful choice! I've got that right here.");
+                    break;
+
+                case "4":
+                    System.out.println("\nWonderful choice! I've got that right here.");
+                    break;
+
+                case "5":
+                    System.out.println("\nWonderful choice! I've got that right here.");
+                    break;
+
+                case "0":
+                    System.out.println("Not a Problem! I'm Happy to Help.\n");
+                    return;
+
+                default:
+                    System.out.println("Oh, fork! That's not an option.");
+                    break;
+                        }
+
+                    }
+
+                }
+
+            }
+
+
 

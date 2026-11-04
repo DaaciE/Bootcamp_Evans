@@ -8,6 +8,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class TheGoodAccount {
+    public static final String ORANGE = "\u001B[38;5;208m";
+    public static final String PINK = "\u001B[38;5;213m";
+    public static final String PURPLE = "\u001B[35m";
+    public static final String YELLOW = "\u001B[33m";
+    public static final String BLUE = "\u001B[34m";
+    public static final String BOLD = "\u001B[1m";
+    public static final String RESET = "\u001B[0m";
+
     public static void main(String[] args) throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -33,13 +41,11 @@ public class TheGoodAccount {
         FileManager.writeTransaction(test);*/
         String userInput = "";
 
-
-
         System.out.println("             .        *");
         System.out.println("        .        .");
-        System.out.println("           \\  |  /");
-        System.out.println("        ---  ( )  ---");
-        System.out.println("________THE GOOD ACCOUNT________");
+        System.out.println(ORANGE + "           \\" + RESET + YELLOW + "  |"+ RESET + ORANGE + "  /" + RESET);
+        System.out.println(YELLOW + "        ---" + RESET + ORANGE + "  ( )  " + RESET + YELLOW + "---" + RESET);
+        System.out.println(YELLOW + "________" + RESET + BLUE + "THE GOOD ACCOUNT" + RESET + YELLOW + "________" + RESET);
         System.out.println("Your finances are in good hands\n");
         Thread.sleep(500);
 
@@ -111,6 +117,22 @@ public class TheGoodAccount {
 
     private static void displayLedger(Scanner scanner) {
         List<Transaction> transactions = FileManager.readTransaction();
+        //sorting method.
+        transactions.sort((t1,t2) -> {
+            int dateComparison = t2.getDate().compareTo(t1.getDate());
+
+            /* if the dates match, that equals 0, and puts the bigger date first
+            if they don't match, it could be a positive or a negative, and will
+             */
+
+            if(dateComparison != 0) {
+                return dateComparison;
+            }
+            /*
+            if the dates = 0, meaning they match, it will move on to comparing the time
+             */
+            return t2.getTime().compareTo(t1.getTime());
+        });
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         System.out.println("\nHi There! I'm Janet, How Can I Help You?");
@@ -121,12 +143,12 @@ public class TheGoodAccount {
             System.out.println("D - Deposits");
             System.out.println("P - Payments");
             System.out.println("R - Reports");
-            System.out.println("H = Home");
+            System.out.println("H - Home");
             String ledgerInput = scanner.nextLine().trim().toUpperCase();
 
             switch (ledgerInput) {
                 case "A":
-                    System.out.println("______________________TRANSACTIONS______________________\n");
+                    System.out.println("______________________TRANSACTIONS______________________");
                     for (Transaction t : transactions) {
                         System.out.printf("%s | %s | %s | %s | %.2f%n",
                                 t.getDate(),
@@ -138,9 +160,31 @@ public class TheGoodAccount {
                     break;
 
                 case "D":
+                    for(Transaction t : transactions){
+                        if(t.getAmount() > 0) {
+                            System.out.println("______________________DEPOSITS______________________");
+                            System.out.printf("%s | %s | %s | %s | %.2f%n",
+                                    t.getDate(),
+                                    t.getTime().format(timeFormat),
+                                    t.getDescription(),
+                                    t.getVendor(),
+                                    t.getAmount());
+                        }
+                    }
                     break;
 
                 case "P":
+                    for(Transaction t : transactions){
+                        if(t.getAmount() < 0) {
+                            System.out.println("______________________PAYMENTS______________________");
+                            System.out.printf("%s | %s | %s | %s | %.2f%n",
+                                    t.getDate(),
+                                    t.getTime().format(timeFormat),
+                                    t.getDescription(),
+                                    t.getVendor(),
+                                    t.getAmount());
+                        }
+                    }
                     break;
 
                 case "R":
@@ -210,6 +254,10 @@ public class TheGoodAccount {
 
                 }
 
+
+    private static void reportsFilter(){
+
+    }
             }
 
 

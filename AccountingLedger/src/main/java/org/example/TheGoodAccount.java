@@ -138,7 +138,7 @@ public class TheGoodAccount {
         System.out.println("\nHi There! I'm Janet, How Can I Help You?");
 
         while (true) {
-            System.out.println("YOUR LEDGER OPTIONS");
+            System.out.println("\nYOUR LEDGER OPTIONS");
             System.out.println("A - All Transactions");
             System.out.println("D - Deposits");
             System.out.println("P - Payments");
@@ -160,9 +160,9 @@ public class TheGoodAccount {
                     break;
 
                 case "D":
+                    System.out.println("______________________DEPOSITS______________________");
                     for(Transaction t : transactions){
                         if(t.getAmount() > 0) {
-                            System.out.println("______________________DEPOSITS______________________");
                             System.out.printf("%s | %s | %s | %s | %.2f%n",
                                     t.getDate(),
                                     t.getTime().format(timeFormat),
@@ -174,9 +174,9 @@ public class TheGoodAccount {
                     break;
 
                 case "P":
+                    System.out.println("______________________PAYMENTS______________________");
                     for(Transaction t : transactions){
                         if(t.getAmount() < 0) {
-                            System.out.println("______________________PAYMENTS______________________");
                             System.out.printf("%s | %s | %s | %s | %.2f%n",
                                     t.getDate(),
                                     t.getTime().format(timeFormat),
@@ -221,21 +221,55 @@ public class TheGoodAccount {
 
             switch (reportInput){
 
-                case "1":
-                    System.out.println("\nWonderful choice! I've got that right here.");
-                    break;
+                case "1": {
+                    System.out.println("\nWonderful choice! I've got that right here.\n");
+                    System.out.println("MONTH TO DATE");
 
-                case "2":
-                    System.out.println("\nWonderful choice! I've got that right here.");
-                    break;
+                LocalDate today = LocalDate.now();
+                    LocalDate firstDay = today.withDayOfMonth(1);
 
-                case "3":
-                    System.out.println("\nWonderful choice! I've got that right here.");
+                    filterByDate(transactions, firstDay, today);
+                    System.out.println("");
                     break;
+                }
 
-                case "4":
-                    System.out.println("\nWonderful choice! I've got that right here.");
+                case "2": {
+                    System.out.println("\nWonderful choice! I've got that right here.\n");
+                    System.out.println("PREVIOUS MONTH");
+
+                    LocalDate today = LocalDate.now();
+                    LocalDate previousMonth = today.minusMonths(1);
+                    LocalDate firstDay = previousMonth.withDayOfMonth(1);
+                    LocalDate lastDay = previousMonth.withDayOfMonth(previousMonth.lengthOfMonth());
+
+                    filterByDate(transactions, firstDay, lastDay);
+                    System.out.println("");
                     break;
+                }
+
+                case "3": {
+                    System.out.println("\nWonderful choice! I've got that right here.\n");
+
+                    LocalDate today = LocalDate.now();
+                    LocalDate thisYear = today.withDayOfYear(1);
+
+                    filterByDate(transactions, thisYear, today);
+                    System.out.println("");
+                    break;
+                }
+
+                case "4":{
+                    System.out.println("\nWonderful choice! I've got that right here.\n");
+
+                    LocalDate today = LocalDate.now();
+                    LocalDate previousYear = today.minusYears(1);
+                    LocalDate firstDay = previousYear.withDayOfYear(1);
+                    LocalDate lastDay = previousYear.withDayOfYear(previousYear.lengthOfYear());
+
+                    filterByDate(transactions, firstDay, lastDay);
+                    System.out.println("");
+                    break;
+                }
 
                 case "5":
                     System.out.println("\nWonderful choice! I've got that right here.");
@@ -255,8 +289,19 @@ public class TheGoodAccount {
                 }
 
 
-    private static void reportsFilter(){
+    private static void filterByDate(List<Transaction> transactions, LocalDate startDate, LocalDate endDate){
+        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
+        for (Transaction t : transactions) {
+            if(!t.getDate().isBefore(startDate) && !t.getDate().isAfter(endDate)) {
+                System.out.printf("%s | %s | %s | %s | %.2f%n",
+                        t.getDate(),
+                        t.getTime().format(timeFormat),
+                        t.getDescription(),
+                        t.getVendor(),
+                        t.getAmount());
+            }
+        }
     }
             }
 

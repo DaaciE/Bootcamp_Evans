@@ -13,6 +13,12 @@ public class TheGoodAccount {
     public static final String PURPLE = "\u001B[35m";
     public static final String YELLOW = "\u001B[33m";
     public static final String BLUE = "\u001B[34m";
+    public static final String PASTEL_PINK = "\u001B[38;2;245;180;208m";
+    public static final String PEACH = "\u001B[38;2;255;184;140m";
+    public static final String BUTTER_YELLOW = "\u001B[38;2;255;217;142m";
+    public static final String LAVENDER = "\u001B[38;2;205;180;246m";
+    public static final String BABY_BLUE = "\u001B[38;2;169;216;243m";
+    public static final String MINT_GREEN = "\u001B[38;2;184;230;208m";
     public static final String BOLD = "\u001B[1m";
     public static final String RESET = "\u001B[0m";
 
@@ -41,53 +47,77 @@ public class TheGoodAccount {
         FileManager.writeTransaction(test);*/
         String userInput = "";
 
-        System.out.println("             .        *");
-        System.out.println("        .        .");
-        System.out.println(ORANGE + "           \\" + RESET + YELLOW + "  |"+ RESET + ORANGE + "  /" + RESET);
-        System.out.println(YELLOW + "        ---" + RESET + ORANGE + "  ( )  " + RESET + YELLOW + "---" + RESET);
-        System.out.println(YELLOW + "________" + RESET + BLUE + "THE GOOD ACCOUNT" + RESET + YELLOW + "________" + RESET);
-        System.out.println("Your finances are in good hands\n");
+        System.out.println(BUTTER_YELLOW + "            \\  |  /" + RESET);
+        System.out.println(PEACH + "          --- (☼) ---" + RESET);
+        System.out.println(BUTTER_YELLOW + "             / | \\" + RESET);
+
+        System.out.println("     .--.                 .--.");
+        System.out.println("  .-(    ).            .-(    ).");
+        System.out.println(" (___.__)__)          (___.__)__)");
+
+        System.out.println();
+        System.out.println(PEACH + "       ✧ THE GOOD ACCOUNT ✧" + RESET);
+        System.out.println(LAVENDER + "       Everything is fine. Probably." + RESET);
+        System.out.println();
         Thread.sleep(500);
 
         while (!userInput.equals("X")) {
             System.out.println("\nWelcome to the Good Account!");
             System.out.println("How Can I Help You?\n");
             System.out.println("YOUR ACCOUNT OPTIONS");
-            System.out.println("D - Add Deposit");
-            System.out.println("P - Make Payment");
-            System.out.println("L - View Ledger");
-            System.out.println("X = Exit");
-
+            System.out.println(BUTTER_YELLOW + "D - Add Deposit" + RESET);
+            System.out.println(PASTEL_PINK + "P - Make Payment" + RESET);
+            System.out.println(LAVENDER + "L - View Ledger" + RESET);
+            System.out.println(BABY_BLUE + "X = Exit" + RESET);
+            System.out.println();
+            System.out.println(BABY_BLUE + "Enter Your Choice:" + RESET);
             userInput = scanner.nextLine().trim().toUpperCase();
 
             switch (userInput) {
                 case "D":
+                    System.out.println(BUTTER_YELLOW + "         \\  |  /" + RESET);
+                    System.out.println(PEACH + "       --- (☼) ---" + RESET);
+                    System.out.println(BUTTER_YELLOW + "          / | \\" + RESET);
+
+                    System.out.println(PASTEL_PINK + "☁ ✧ A GOOD THING JUST CAME IN! ✧ ☁" + RESET);
+                    System.out.println(BUTTER_YELLOW + "\"Darling, how wonderfully prosperous!\"" + RESET);
                     addTransaction(userInput, scanner);
                     break;
 
                 case "P":
+                    System.out.println(PASTEL_PINK + "      .--.        .--." + RESET);
+                    System.out.println(PASTEL_PINK + "   .-(    ).   .-(    )." + RESET);
+                    System.out.println(LAVENDER + "  (___.__)__) (___.__)__)" + RESET);
+
+                    System.out.println(PEACH + "✧ OH, FORK! MONEY'S LEAVING! ✧" + RESET);
+                    System.out.println(PASTEL_PINK + "\"Okay, but did we really need that?\"\n" + RESET);
                     addTransaction(userInput, scanner);
                     break;
 
                 case "L":
+                    System.out.println(LAVENDER + "     .--.          .--." + RESET);
+                    System.out.println(PASTEL_PINK + "  .-(    ).     .-(    )." + RESET);
+                    System.out.println(LAVENDER + " (___.__)__)   (___.__)__)" + RESET);
+
+                    System.out.println(PASTEL_PINK + "✧ WELCOME TO THE LEDGER VOID ✧" + RESET);
+                    System.out.println(BABY_BLUE + "\"Hi there! I've got your records right here!\"" + RESET);
                     displayLedger(scanner);
                     break;
 
                 case "X":
-                    System.out.println(YELLOW + "         \\  |  /" + RESET);
-                    System.out.println(ORANGE + "       --- (☼) ---" + RESET);
-                    System.out.println(YELLOW + "          / | \\" + RESET);
+                    System.out.println(BUTTER_YELLOW + "         \\  |  /" + RESET);
+                    System.out.println(PEACH + "       --- (☼) ---" + RESET);
+                    System.out.println(BUTTER_YELLOW + "          / | \\" + RESET);
                     System.out.println(PINK + "   ~~~~~~~~~~~~~~~~~~~~" + RESET);
 
-                    System.out.println(ORANGE + "✧ UNTIL THE NEXT AFTERLIFE ✧" + RESET);
-                    System.out.println(PINK + "    \"Take it sleazy!\"" + RESET);
-                    System.out.println(PURPLE + "    ☁ ⋆｡°✩ ☁ ✩°｡⋆ ☁" + RESET);
+                    System.out.println(PEACH + "✧ UNTIL THE NEXT AFTERLIFE ✧" + RESET);
+                    System.out.println(PASTEL_PINK + "    \"Take it sleazy!\"" + RESET);
                     break;
 
                 default:
-                    System.out.println(ORANGE + "✧ OH, DIP! ✧" + RESET);
-                    System.out.println(PINK + "☁ THAT WASN'T AN OPTION! ☁" + RESET);
-                    System.out.println(PURPLE + "\"Wait, what are we doing again?\"" + RESET);
+                    System.out.println(PEACH + "✧ OH, DIP! ✧" + RESET);
+                    System.out.println(PASTEL_PINK + "☁ THAT WASN'T AN OPTION! ☁" + RESET);
+                    System.out.println(LAVENDER + "\"Wait, what are we doing again?\"" + RESET);
 
             }
         }
@@ -142,16 +172,18 @@ public class TheGoodAccount {
 
         while (true) {
             System.out.println("\nYOUR LEDGER OPTIONS");
-            System.out.println("A - All Transactions");
-            System.out.println("D - Deposits");
-            System.out.println("P - Payments");
-            System.out.println("R - Reports");
-            System.out.println("H - Home");
+            System.out.println(MINT_GREEN + "[A] All Transactions" + RESET);
+            System.out.println(BUTTER_YELLOW + "[D] Deposits" + RESET);
+            System.out.println(PASTEL_PINK + "[P] Payments" + RESET);
+            System.out.println(LAVENDER + "[R] Reports" + RESET);
+            System.out.println(BABY_BLUE + "[H] Home" + RESET);
+            System.out.println();
+            System.out.println(BABY_BLUE + "Enter Your Choice:" + RESET);
             String ledgerInput = scanner.nextLine().trim().toUpperCase();
 
             switch (ledgerInput) {
                 case "A":
-                    System.out.println("____________________________________________TRANSACTIONS____________________________________________");
+                    System.out.println(MINT_GREEN +"____________________________________________TRANSACTIONS____________________________________________"+ RESET);
                     System.out.printf("%-15s %-12s %-30s %-20s %10s%n",
                             "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT");
                     for (Transaction t : transactions) {
@@ -165,7 +197,7 @@ public class TheGoodAccount {
                     break;
 
                 case "D":
-                    System.out.println("____________________________________________DEPOSITS____________________________________________");
+                    System.out.println(BUTTER_YELLOW + "____________________________________________DEPOSITS____________________________________________"+ RESET);
                     System.out.printf("%-15s %-12s %-30s %-20s %10s%n",
                             "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT");
                     for(Transaction t : transactions){
@@ -181,7 +213,7 @@ public class TheGoodAccount {
                     break;
 
                 case "P":
-                    System.out.println("____________________________________________PAYMENTS____________________________________________");
+                    System.out.println(PASTEL_PINK + "____________________________________________PAYMENTS____________________________________________"+ RESET);
                     System.out.printf("%-15s %-12s %-30s %-20s %10s%n",
                             "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT");
                     for(Transaction t : transactions){
@@ -230,19 +262,21 @@ public class TheGoodAccount {
 
         while (true){
             System.out.println("\nYOUR REPORT OPTIONS");
-            System.out.println("1 - Month to Date");
-            System.out.println("2 - Previous Month");
-            System.out.println("3 - Year To Date");
-            System.out.println("4 - Previous Year");
-            System.out.println("5 - Search by Vendor");
-            System.out.println("0 - Ledger Menu");
+            System.out.println(MINT_GREEN + "[1] Month to Date");
+            System.out.println(BUTTER_YELLOW + "[2] Previous Month"+ RESET);
+            System.out.println(PASTEL_PINK + "[3] Year To Date"+ RESET);
+            System.out.println(LAVENDER + "[4] Previous Year"+ RESET);
+            System.out.println(PEACH + "[5] Search by Vendor"+ RESET);
+            System.out.println(BABY_BLUE + "[0] Ledger Menu" + RESET);
+            System.out.println();
+            System.out.println(BABY_BLUE + "Enter Your Choice:" + RESET);
             String reportInput = scanner.nextLine().trim();
 
             switch (reportInput){
 
                 case "1": {
                     System.out.println("\nWonderful choice! I've got that right here.\n");
-                    System.out.println("____________________________________________MONTH TO DATE____________________________________________");
+                    System.out.println(MINT_GREEN + "____________________________________________MONTH TO DATE____________________________________________"+ RESET);
 
                 LocalDate today = LocalDate.now();
                     LocalDate firstDay = today.withDayOfMonth(1);
@@ -253,7 +287,7 @@ public class TheGoodAccount {
 
                 case "2": {
                     System.out.println("\nWonderful choice! I've got that right here.\n");
-                    System.out.println("____________________________________________PREVIOUS MONTH____________________________________________");
+                    System.out.println(BUTTER_YELLOW + "____________________________________________PREVIOUS MONTH____________________________________________"+ RESET);
 
                     LocalDate today = LocalDate.now();
                     LocalDate previousMonth = today.minusMonths(1);
@@ -267,7 +301,7 @@ public class TheGoodAccount {
 
                 case "3": {
                     System.out.println("\nWonderful choice! I've got that right here.\n");
-                    System.out.println("____________________________________________YEAR TO DATE____________________________________________");
+                    System.out.println(PASTEL_PINK + "____________________________________________YEAR TO DATE____________________________________________"+ RESET);
 
                     LocalDate today = LocalDate.now();
                     LocalDate thisYear = today.withDayOfYear(1);
@@ -280,7 +314,7 @@ public class TheGoodAccount {
                 case "4":{
                     System.out.println("\nWonderful choice! I've got that right here.\n");
 
-                    System.out.println("____________________________________________PREVIOUS YEAR____________________________________________");
+                    System.out.println(LAVENDER + "____________________________________________PREVIOUS YEAR____________________________________________"+ RESET);
 
                     LocalDate today = LocalDate.now();
                     LocalDate previousYear = today.minusYears(1);
@@ -309,7 +343,7 @@ public class TheGoodAccount {
                     } else{
                         boolean vendorFound = false;
 
-                        System.out.println("____________________________________________SEARCH BY VENDOR____________________________________________");
+                        System.out.println(PEACH + "____________________________________________SEARCH BY VENDOR____________________________________________"+ RESET);
                         System.out.printf("%-15s %-12s %-30s %-20s %10s%n",
                                 "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT");
                     for(Transaction t : transactions) {

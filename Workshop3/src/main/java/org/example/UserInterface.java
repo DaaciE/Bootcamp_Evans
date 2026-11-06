@@ -128,22 +128,8 @@ public class UserInterface {
 
         }
     }
-    private void searchByName(List<Product> productList, String clothingItem) {
-        // Search by product name
-        boolean found = false;
-        for (Product product : productList) {
-            if (product.getClothingItem().equalsIgnoreCase(clothingItem)) {
-                System.out.println("YOUR FINDINGS, COLLECTED!");
-                System.out.printf("%s| (%s) %s", product.getCategory(), product.getSku(), product.getClothingItem());
-                System.out.println("");
 
-                return;
-            }
-        }
-        if (!found) {
-            System.out.println("FINDINGS DEBUNKED!");
-        }
-    }
+
 
         private void searchBySku (List < Product > productList, String sku) {
             // Search by SKU
@@ -155,7 +141,22 @@ public class UserInterface {
                     System.out.println("");
 
                     return;
-                }
+                    private void searchByName(List<Product> productList, String clothingItem) {
+                        // Search by product name
+                        boolean found = false;
+                        for (Product product : productList) {
+                            if (product.getClothingItem().equalsIgnoreCase(clothingItem)) {
+                                System.out.println("YOUR FINDINGS, COLLECTED!");
+                                System.out.printf("%s| (%s) %s", product.getCategory(), product.getSku(), product.getClothingItem());
+                                System.out.println("");
+
+                                return;
+                            }
+                        }
+                        if (!found) {
+                            System.out.println("FINDINGS DEBUNKED!");
+                        }
+                    }                }
             }
             if (!found) {
                 System.out.println("FINDINGS DEBUNKED!");

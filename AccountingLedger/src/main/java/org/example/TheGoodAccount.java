@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class TheGoodAccount {
+    //COLOURS
     public static final String ORANGE = "\u001B[38;5;208m";
     public static final String PINK = "\u001B[38;5;213m";
     public static final String PURPLE = "\u001B[35m";
@@ -19,6 +20,18 @@ public class TheGoodAccount {
     public static final String LAVENDER = "\u001B[38;2;205;180;246m";
     public static final String BABY_BLUE = "\u001B[38;2;169;216;243m";
     public static final String MINT_GREEN = "\u001B[38;2;184;230;208m";
+    public static final String ROSEWATER = "\u001B[38;2;250;218;221m";
+    public static final String COTTON_CANDY = "\u001B[38;2;255;204;229m";
+    public static final String SOFT_CORAL = "\u001B[38;2;255;181;167m";
+    public static final String APRICOT = "\u001B[38;2;255;209;169m";
+    public static final String VANILLA_CREAM = "\u001B[38;2;255;240;194m";
+    public static final String LEMON_CHIFFON = "\u001B[38;2;255;250;205m";
+    public static final String LILAC = "\u001B[38;2;216;180;226m";
+    public static final String PERIWINKLE = "\u001B[38;2;191;203;250m";
+    public static final String POWDER_BLUE = "\u001B[38;2;176;224;230m";
+    public static final String SEAFOAM = "\u001B[38;2;184;232;223m";
+    public static final String PISTACHIO = "\u001B[38;2;212;232;181m";
+    public static final String SAGE_GREEN = "\u001B[38;2;201;216;190m";
     public static final String BOLD = "\u001B[1m";
     public static final String RESET = "\u001B[0m";
 
@@ -50,25 +63,22 @@ public class TheGoodAccount {
         System.out.println(BUTTER_YELLOW + "            \\  |  /" + RESET);
         System.out.println(PEACH + "          --- (☼) ---" + RESET);
         System.out.println(BUTTER_YELLOW + "             / | \\" + RESET);
-
         System.out.println("     .--.                 .--.");
         System.out.println("  .-(    ).            .-(    ).");
         System.out.println(" (___.__)__)          (___.__)__)");
-
         System.out.println();
-        System.out.println(PEACH + "       ✧ THE GOOD ACCOUNT ✧" + RESET);
-        System.out.println(LAVENDER + "       Everything is fine. Probably." + RESET);
-        System.out.println();
-        Thread.sleep(500);
 
         while (!userInput.equals("X")) {
+            System.out.println(PEACH + "       ✧ THE GOOD ACCOUNT ✧" + RESET);
+            System.out.println(LAVENDER + "   Everything is fine. Probably." + RESET);
+            Thread.sleep(500);
             System.out.println("\nWelcome to the Good Account!");
             System.out.println("How Can I Help You?\n");
             System.out.println("YOUR ACCOUNT OPTIONS");
-            System.out.println(BUTTER_YELLOW + "D - Add Deposit" + RESET);
-            System.out.println(PASTEL_PINK + "P - Make Payment" + RESET);
-            System.out.println(LAVENDER + "L - View Ledger" + RESET);
-            System.out.println(BABY_BLUE + "X = Exit" + RESET);
+            System.out.println(BUTTER_YELLOW + "[D] Add Deposit" + RESET);
+            System.out.println(PASTEL_PINK + "[P] Make Payment" + RESET);
+            System.out.println(LAVENDER + "[L] View Ledger" + RESET);
+            System.out.println(BABY_BLUE + "[X] Exit" + RESET);
             System.out.println();
             System.out.println(BABY_BLUE + "Enter Your Choice:" + RESET);
             userInput = scanner.nextLine().trim().toUpperCase();
@@ -240,7 +250,7 @@ public class TheGoodAccount {
                     break;
 
                 case "H":
-                    System.out.println("Wonderful choice! Returning you to the home screen.");
+                    System.out.println("Wonderful choice! Returning you to the home screen.\n");
                     return;
 
                 default:
@@ -267,6 +277,7 @@ public class TheGoodAccount {
             System.out.println(PASTEL_PINK + "[3] Year To Date"+ RESET);
             System.out.println(LAVENDER + "[4] Previous Year"+ RESET);
             System.out.println(PEACH + "[5] Search by Vendor"+ RESET);
+            System.out.println(PISTACHIO + "[6] Custom Search" + RESET);
             System.out.println(BABY_BLUE + "[0] Ledger Menu" + RESET);
             System.out.println();
             System.out.println(BABY_BLUE + "Enter Your Choice:" + RESET);
@@ -281,7 +292,7 @@ public class TheGoodAccount {
                 LocalDate today = LocalDate.now();
                     LocalDate firstDay = today.withDayOfMonth(1);
                     filterByDate(transactions, firstDay, today);
-                    System.out.println("");
+                    System.out.println(" ");
                     break;
                 }
 
@@ -362,6 +373,14 @@ public class TheGoodAccount {
                             System.out.println("\nNo Transactions Found for that Vendor.");
                         }
                         }
+                    break;
+
+                case "6" :
+                    System.out.println();
+                    System.out.println(VANILLA_CREAM + "✧ UNDER CONSTRUCTION ✧" + RESET);
+                    System.out.println(PASTEL_PINK + "\"Fun fact! This feature doesn't exist yet. Isn't that exciting?\"" + RESET);
+                    System.out.println(LAVENDER + "- Janet, probably" + RESET);
+                    System.out.println();
                     break;
 
                 case "0":

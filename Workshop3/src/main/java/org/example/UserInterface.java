@@ -21,10 +21,11 @@ public class UserInterface {
         String userInput = "";
 
         while (!userInput.equals("3")) {
-            System.out.println("===== THEORIES =====");
+            System.out.println("\n===== THEORIES =====");
             System.out.println("1) Our Closet ");
             System.out.println("2) CART");
             System.out.println("3) Exit");
+            System.out.println("Enter Your Choice:");
             userInput = scanner.nextLine();
 
             switch (userInput) {
@@ -35,7 +36,7 @@ public class UserInterface {
 
                 case "2":
                     // Cart menu
-
+                displayCart();
                     break;
 
                 case "3":
@@ -57,10 +58,11 @@ public class UserInterface {
         String closetInput = "";
 
         while (!closetInput.equals("3")) {
-            System.out.println("======== THE DETAILS BEHIND THE THEORY ========");
+            System.out.println("\n======== THE DETAILS BEHIND THE THEORY ========");
             System.out.println("1) OUR ENTIRE CLOSET ");
             System.out.println("2) SEARCH");
             System.out.println("3) Back to Closet");
+            System.out.println("Enter Your Choice:");
             closetInput = scanner.nextLine();
 
 
@@ -73,13 +75,14 @@ public class UserInterface {
 
                 case "2":
                     String searchInput = "";
-                    System.out.println("======== FIND THE THEORY THAT FITS ========");
+                    System.out.println("\n======== FIND THE THEORY THAT FITS ========");
                     System.out.printf("How would you like to search:");
                     System.out.println("Your options are: ");
                     System.out.println("1) Search by Name");
                     System.out.println("2) Search by Sku");
                     System.out.println("3) Search by Department");
                     System.out.println("4) Return to Closet");
+                    System.out.println("Enter Your Choice:");
                     searchInput = scanner.nextLine();
 
                     switch (searchInput) {
@@ -146,11 +149,12 @@ public class UserInterface {
                 System.out.println("");
                 System.out.printf("%s| (%s) %s", product.getCategory(), product.getSku(), product.getClothingItem());
                 System.out.println("");
-                System.out.println("YOUR FINDINGS, COLLECTED!\n");
             }
         }
-        if (!found) {
-            System.out.println("FINDINGS DEBUNKED!");
+        if (found) {
+            System.out.println("YOUR FINDINGS, COLLECTED!\n");
+        } else {
+            System.out.println("FINDINGS DEBUNKED!\n");
         }
     }
 
@@ -164,12 +168,12 @@ public class UserInterface {
                 System.out.println("");
                 System.out.printf("%s| (%s) %s", product.getCategory(), product.getSku(), product.getClothingItem());
                 System.out.println("");
-                System.out.println("YOUR FINDINGS, COLLECTED!\n");
-
             }
         }
-        if (!found) {
-            System.out.println("FINDINGS DEBUNKED!");
+        if (found) {
+            System.out.println("YOUR FINDINGS, COLLECTED!\n");
+        } else {
+            System.out.println("FINDINGS DEBUNKED!\n");
         }
     }
 
@@ -183,30 +187,49 @@ public class UserInterface {
                 System.out.println("");
                 System.out.printf("%s| (%s) %s", product.getCategory(), product.getSku(), product.getClothingItem());
                 System.out.println("");
-                System.out.println("YOUR FINDINGS, COLLECTED!\n");
             }
         }
-        if (!found) {
-            System.out.println("FINDINGS DEBUNKED!");
+        if (found) {
+            System.out.println("YOUR FINDINGS, COLLECTED!\n");
+        } else {
+            System.out.println("FINDINGS DEBUNKED!\n");
         }
-    }
+        }
+
 
     private void promptAddToCart(Scanner scanner) {
-        System.out.println("Enter a product SKU to add to cart, or press Enter to go back:");
-        String sku = scanner.nextLine().trim();
 
-        if (!sku.isEmpty()) {
-            addToCart(sku);
+        while(true) {
+            System.out.println("Enter a product SKU to add to cart, or press Enter to go back:");
+            String sku = scanner.nextLine().trim();
+
+            if (sku.isEmpty()) {
+                break;
+            } addToCart(sku);
         }
     }
+
     private void addToCart(String sku) {
         for (Product product : productList) {
-            if (product.getSku().equalsIgnoreCase(sku)) {
+            if (product.getSku().toLowerCase().contains(sku.toLowerCase())) {
                 cart.add(product);
                 System.out.println("ADDED TO YOUR CART!");
                 return;
             }
         }
+    }
+
+    private void displayCart(){
+        System.out.println("============YOUR CART============");
+        double cartTotal = 0;
+
+        for( Product product : cart){
+            System.out.printf("%-25s $%5.2f%n", product.getClothingItem(), product.getPrice());
+
+            cartTotal += product.getPrice();
+        }
+        System.out.printf("\nTotal: %.2f",cartTotal);
+        System.out.println(" ");
     }
 
 }

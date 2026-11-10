@@ -1,10 +1,8 @@
 package org.example;
 
-
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.*;
 
 public class UserInterface {
     private List<Product> productList;
@@ -36,7 +34,7 @@ public class UserInterface {
 
                 case "2":
                     // Cart menu
-                displayCart();
+                displayCart(scanner);
                     break;
 
                 case "3":
@@ -176,7 +174,6 @@ public class UserInterface {
             System.out.println("FINDINGS DEBUNKED!\n");
         }
     }
-
     private void searchByDepartment(List<Product> productList, String category) {
         // Search by Department
         boolean found = false;
@@ -196,7 +193,6 @@ public class UserInterface {
         }
         }
 
-
     private void promptAddToCart(Scanner scanner) {
 
         while(true) {
@@ -208,7 +204,6 @@ public class UserInterface {
             } addToCart(sku);
         }
     }
-
     private void addToCart(String sku) {
         for (Product product : productList) {
             if (product.getSku().toLowerCase().contains(sku.toLowerCase())) {
@@ -218,18 +213,79 @@ public class UserInterface {
             }
         }
     }
+    private void removeFromCart(String sku) {
+        for (Product product : cart) {
+            if (product.getSku().toLowerCase().contains(sku.toLowerCase())) {
+                cart.remove(product);
+                System.out.println("ITEM REMOVED!");
+                return;
+            }
+        }System.out.println("ITEM NOT FOUND IN CART!");
+    }
 
-    private void displayCart(){
-        System.out.println("============YOUR CART============");
+    private void displayCart(Scanner scanner){
         double cartTotal = 0;
 
-        for( Product product : cart){
-            System.out.printf("%-25s $%5.2f%n", product.getClothingItem(), product.getPrice());
+        System.out.println("============YOUR CART============");
+        System.out.println("1) View Cart");
+        System.out.println("2) Checkout");
+        System.out.println("3) Return Home");
+        System.out.println("\nEnter Your Choice:");
+        String cartInput = scanner.nextLine();
 
-            cartTotal += product.getPrice();
+        switch (cartInput) {
+        case "1":
+             cartTotal = 0;
+
+             Map<String, Integer> quantities = new HashMap<>();
+
+            for( Product product : cart){
+                String sku = product.getSku();
+                int count = quantities.getOrDefault(sku, 0); //<< this means Find the current quantity, or use 0 if SKU isn't found
+                quantities.put(sku, count + 1); // Increase the quantity by 1 and save it
+
+                //System.out.printf("SKU:%s| %-25s $%5.2f%n",product.getSku(), product.getClothingItem(), product.getPrice());
+                cartTotal += product.getPrice();
+            }
+
+            for(Product product : productList) {
+                String sku = product.getSku();
+
+                if (quantities.containsKey(sku)) {
+                    int quantity = quantities.get(sku);
+
+                    System.out.printf("SKU:%s| %-25s $%5.2f%n QTY: %d%n",
+                            product.getSku(),
+                            product.getClothingItem(),
+                            product.getPrice(),
+                            quantity);
+                }
+            }
+
+            System.out.printf("\nTotal: %.2f",cartTotal);
+            System.out.println(" ");
+
+            while(true) {
+                System.out.println("Enter a product SKU to remove from your cart, or press Enter to go back:");
+                 cartInput = scanner.nextLine().trim();
+                if (cartInput.isEmpty()) {
+                break;
+                    //"\\d{3}": \\d  represents any digit from 0–9
+                    //{3} Requires exactly 3 digits
+                    //.matches() - checks whether the entire String matches the pattern
+
+                } if (!cartInput.matches("\\d{3}")) {
+                    System.out.println("PLEASE ENTER A VALID SKU!");
+                    continue;
+                }
+                removeFromCart(cartInput);
+            }
+            break;
+
+            case "2":
+
         }
-        System.out.printf("\nTotal: %.2f",cartTotal);
-        System.out.println(" ");
+
     }
 
 }

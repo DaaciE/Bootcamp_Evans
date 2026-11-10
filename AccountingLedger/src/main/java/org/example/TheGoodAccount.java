@@ -169,7 +169,7 @@ public class TheGoodAccount {
         catch (NumberFormatException ex){
             System.out.println(ORANGE + "✧ OH, DIP! ✧" + RESET);
             System.out.println(PINK + "☁ THAT WASN'T AN OPTION! ☁" + RESET);
-            System.out.println(PURPLE + "\"Please enter a valid number for the amount.\"" + RESET);
+            System.out.println(PURPLE + "\"Please enter a valid number for the amount.\"\n" + RESET);
         }
     }
 

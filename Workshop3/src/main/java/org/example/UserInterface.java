@@ -49,7 +49,6 @@ public class UserInterface {
         }
     }
 
-
     private void displayClosetMenu() {
         // Ask which search method they want
         Scanner scanner = new Scanner(System.in);
@@ -285,7 +284,6 @@ public class UserInterface {
             case "2":
 
         }
-
     }
 
 }

@@ -1,17 +1,28 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.math.BigDecimal;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        //Vehicle chicken = new Vehicle(10122, 2020, "Kia", "Forte", VehicleType.SEDAN, "Black", 108005, BigDecimal.valueOf(25000)); //BigDecimal.valueOf()
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        Dealership dealership = DealershipFileManager.getDealership();
+
+        dealership.getAllVehicles().size();
+        System.out.println("Total vehicles in inventory: " + dealership.getAllVehicles().size());
+
+        for (Vehicle vehicle : dealership.getAllVehicles()) {
+            System.out.printf("%d|%d|%s|%s|%s|%s|%d|%s%n",
+                    vehicle.getVin(),
+                    vehicle.getYear(),
+                    vehicle.getMake(),
+                    vehicle.getModel(),
+                    vehicle.getVehicleType(),
+                    vehicle.getColor(),
+                    vehicle.getOdometer(),
+                    vehicle.getPrice());
+
         }
     }
 }

@@ -1,6 +1,7 @@
 package org.example;
 
 import java.math.BigDecimal;
+import java.time.Year;
 
 public class Vehicle extends Asset {
     private String makeModel;
@@ -37,5 +38,33 @@ public class Vehicle extends Asset {
 
     public void setOdometer(int odometer) {
         this.odometer = odometer;
+    }
+
+    @Override
+    public BigDecimal getValue(){
+     int vehicleAge = Year.now().getValue() - year;
+     BigDecimal depreciationRate = BigDecimal.ZERO;
+     BigDecimal vehicleValue = BigDecimal.ZERO;
+
+     if (vehicleAge >= 0 && vehicleAge <= 3) {
+         depreciationRate = new BigDecimal("0.03");
+     } else if (vehicleAge >= 4 && vehicleAge <= 6) {
+         depreciationRate = new BigDecimal("0.06");
+     } else if (vehicleAge >= 7 && vehicleAge <= 10) {
+        depreciationRate = new BigDecimal("0.08");
+     } else if (vehicleAge > 10) {
+         vehicleValue = new BigDecimal(1000);
+     } else{
+         throw new IllegalArgumentException("Please choose a valid condition (1-4)!");
+     }
+
+        if (odometer > 100000 &&
+                !makeModel.toLowerCase().contains("honda") &&
+                !makeModel.toLowerCase().contains("toyota")) {
+
+            vehicleValue = vehicleValue.multiply(new BigDecimal("0.75"));
+        }
+
+        return vehicleValue;
     }
 }

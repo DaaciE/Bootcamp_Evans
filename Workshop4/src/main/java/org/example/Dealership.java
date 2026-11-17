@@ -33,7 +33,11 @@ public class Dealership {
     }
 
     public List<Vehicle> getVehicleByColor(String color){
-        return null; //new ArrayList<>();
+        return new ArrayList<>();
+        for(Vehicle vehicle : inventory) {
+            if (vehicle.getColor().contains(color.toLowerCase())) {
+            }
+        }
     }
 
     public List<Vehicle> getVehicleByMileage(int min, int max){

@@ -7,12 +7,10 @@ public class UserInterface {
     Scanner scanner = new Scanner(System.in);
     Dealership dealership;
 
-    public UserInterface(){
-        display();
-    }
+    public UserInterface(){}
 
 
-    private void display(){
+    public void display(){
         String choice = "";
         init();
 

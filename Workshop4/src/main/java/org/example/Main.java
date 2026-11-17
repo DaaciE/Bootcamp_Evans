@@ -5,7 +5,9 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        /* Vehicle chicken = new Vehicle(10122, 2020, "Kia", "Forte", VehicleType.SEDAN, "Black", 108005, BigDecimal.valueOf(25000)); //BigDecimal.valueOf()
+        /*
+        TESTING
+        Vehicle chicken = new Vehicle(10122, 2020, "Kia", "Forte", VehicleType.SEDAN, "Black", 108005, BigDecimal.valueOf(25000)); //BigDecimal.valueOf()
         Dealership dealership = DealershipFileManager.getDealership();
 
         dealership.getAllVehicles().size();
@@ -21,10 +23,10 @@ public class Main {
                     vehicle.getColor(),
                     vehicle.getOdometer(),
                     vehicle.getPrice());
-
         } */
+        UserInterface ui = new UserInterface();
+        ui.display();
 
-       new UserInterface();
 
     }
 }

@@ -2,6 +2,7 @@ package org.example;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,6 +25,7 @@ public class Main {
                     vehicle.getOdometer(),
                     vehicle.getPrice());
         } */
+        Scanner scanner = new Scanner(System.in);
         UserInterface ui = new UserInterface();
         ui.display();
 

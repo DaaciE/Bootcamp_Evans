@@ -1,10 +1,9 @@
 package org.example;
 
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class DealershipFileManager {
     public static Dealership getDealership() {
@@ -53,7 +52,43 @@ public class DealershipFileManager {
         return dealership;
     }
 
-    public static void saveDealership(Dealership dealership){
+    public static void saveDealership(Dealership dealership) throws IOException {
+    try {
+        FileWriter fileWriter = new FileWriter("src/main/resources/car_inventory.csv");
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
+        String line = String.format("%s|%s|%s",
+                dealership.getName(),
+                dealership.getAddress(),
+                dealership.getPhone());
+
+        bufferedWriter.write(line);
+        bufferedWriter.newLine();
+
+
+        for(Vehicle vehicle : dealership.getAllVehicles()) {
+            String line2 = String.format("%d|%d|%s|%s|%s|%s|%d|%s",
+                    vehicle.getVin(),
+                    vehicle.getYear(),
+                    vehicle.getMake(),
+                    vehicle.getModel(),
+                    vehicle.getVehicleType(),
+                    vehicle.getColor(),
+                    vehicle.getOdometer(),
+                    vehicle.getPrice().setScale(2, RoundingMode.HALF_UP));
+
+            bufferedWriter.write(line2);
+            bufferedWriter.newLine();
+        }
+        bufferedWriter.close();
+        System.out.println("Action Successful!");
+
+    } catch (IOException ex){
+        System.out.println("Trouble writing file. Check your file.");
+        //ex.printStackTrace();
+    }catch (Exception ex) {
+        System.out.println("...");
+        //ex.printStackTrace();
+    }
     }
 }

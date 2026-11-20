@@ -1,11 +1,11 @@
 package org.example;
 
-import java.math.BigDecimal;
-import java.util.List;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         /*
         TESTING
         Vehicle chicken = new Vehicle(10122, 2020, "Kia", "Forte", VehicleType.SEDAN, "Black", 108005, BigDecimal.valueOf(25000)); //BigDecimal.valueOf()

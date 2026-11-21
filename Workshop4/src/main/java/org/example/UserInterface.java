@@ -1,5 +1,6 @@
 package org.example;
 
+
 import javax.print.attribute.standard.NumberUp;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -23,24 +24,26 @@ public class UserInterface {
         while (true) {
             System.out.println("Dealership Menu");
             System.out.println("[0] EXIT");
-            System.out.println("[1] VIEW All VEHICLES");
+            System.out.println("[1] EXPLORE THE COLLECTION");
             System.out.println("[2] SEARCH BY MAKE/MODEL");
             System.out.println("[3] SEARCH BY VEHICLE TYPE");
             System.out.println("[4] SEARCH BY YEAR");
             System.out.println("[5] SEARCH BY COLOR");
-            System.out.println("[6]");
-            System.out.println("[7]");
-            System.out.println("[8]");
-            System.out.println("[9]");
-            System.out.println("[10] SELL A VEHICLE");
+            System.out.println("[6] SEARCH BY PRICE");
+            System.out.println("[7] SEARCH BY MILEAGE");
+            System.out.println("[8] ADD TO THE COLLECTION");
+            System.out.println("[9] REMOVE FROM THE COLLECTION");
+            System.out.println("[10] PURCHASE A VEHICLE");
             System.out.println("[11] LEASE A VEHICLE");
+
+            System.out.println();
             System.out.println("Please Enter Your Choice:");
             choice = scanner.nextLine();
 
 
             switch (choice) {
                 case "0":
-
+                    break;
                 case "1":
                     processGetAllVehiclesRequest();
                     break;
@@ -78,12 +81,7 @@ public class UserInterface {
                     break;
 
                 case "10":
-
-                    break;
-
                 case "11":
-
-
                 default:
                     System.out.println(" Please Enter a Valid Input.");
                     break;

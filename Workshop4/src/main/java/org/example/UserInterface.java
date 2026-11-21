@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -175,15 +176,15 @@ public class UserInterface {
         int yearInput = getValidInt("Enter the vehicle year:");
 
         System.out.println("Enter the vehicle make (ex. Toyota, Honda, Ford):");
-        String makeInput = scanner.nextLine().toUpperCase();
+        String makeInput = scanner.nextLine().trim().toUpperCase();
 
         System.out.println("Enter the vehicle model (ex. Camry, Civic, Mustang):");
-        String modelInput = scanner.nextLine().toUpperCase();
+        String modelInput = scanner.nextLine().trim().toUpperCase();
 
         VehicleType vehicleType = getValidVehicleType("Enter the vehicle type (SEDAN, SUV, TRUCK, SPRINTER):");
 
         System.out.println("Enter the vehicle color:");
-        String colourInput = scanner.nextLine().toUpperCase();
+        String colourInput = scanner.nextLine().trim().toUpperCase();
 
         int mileageInput = getValidInt("Enter the vehicle mileage:");
 

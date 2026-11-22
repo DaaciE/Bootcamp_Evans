@@ -1,0 +1,52 @@
+THE MOTOR EDIT — CONTRACTS.CSV FIELD REFERENCE
+============================================
+
+This file explains the pipe-separated (|) columns in contracts.csv.
+Both SALE and LEASE records are saved in the same file, but they have
+slightly different numbers of fields. Do not add these headers to contracts.csv.
+
+SALE RECORD (18 columns)
+------------------------
+CONTRACT_TYPE|DATE|CUSTOMER_NAME|CUSTOMER_EMAIL|VIN|YEAR|MAKE|MODEL|VEHICLE_TYPE|COLOR|ODOMETER|VEHICLE_PRICE|SALES_TAX|RECORDING_FEE|PROCESSING_FEE|TOTAL_PRICE|FINANCING_OPTION|MONTHLY_PAYMENT
+
+1. CONTRACT_TYPE      SALE
+2. DATE               Contract date
+3. CUSTOMER_NAME      Customer's name
+4. CUSTOMER_EMAIL     Customer's email
+5. VIN                Vehicle identifier
+6. YEAR               Vehicle model year
+7. MAKE               Vehicle manufacturer
+8. MODEL              Vehicle model
+9. VEHICLE_TYPE       Vehicle category (e.g., SEDAN, SUV)
+10. COLOR             Vehicle color
+11. ODOMETER          Vehicle mileage
+12. VEHICLE_PRICE     Original vehicle price
+13. SALES_TAX         Sales tax amount
+14. RECORDING_FEE     Recording fee amount
+15. PROCESSING_FEE    Processing fee amount
+16. TOTAL_PRICE       Total sale price, including applicable fees/tax
+17. FINANCING_OPTION  true if financed, false if not
+18. MONTHLY_PAYMENT   Monthly payment (0 if not financed)
+
+LEASE RECORD (16 columns)
+-------------------------
+CONTRACT_TYPE|DATE|CUSTOMER_NAME|CUSTOMER_EMAIL|VIN|YEAR|MAKE|MODEL|VEHICLE_TYPE|COLOR|ODOMETER|VEHICLE_PRICE|EXPECTED_ENDING_VALUE|LEASE_FEE|TOTAL_PRICE|MONTHLY_PAYMENT
+
+1. CONTRACT_TYPE      LEASE
+2. DATE               Contract date
+3. CUSTOMER_NAME      Customer's name
+4. CUSTOMER_EMAIL     Customer's email
+5. VIN                Vehicle identifier
+6. YEAR               Vehicle model year
+7. MAKE               Vehicle manufacturer
+8. MODEL              Vehicle model
+9. VEHICLE_TYPE       Vehicle category (e.g., SEDAN, SUV)
+10. COLOR             Vehicle color
+11. ODOMETER          Vehicle mileage
+12. VEHICLE_PRICE     Original vehicle price
+13. EXPECTED_ENDING_VALUE  Expected ending value (50% of vehicle price)
+14. LEASE_FEE         Lease fee (7% of vehicle price)
+15. TOTAL_PRICE       Expected ending value plus lease fee
+16. MONTHLY_PAYMENT   Monthly lease payment
+
+NOTE: contracts.csv uses no header row. Consult this file when reading it.

@@ -5,6 +5,7 @@ import javax.print.attribute.standard.NumberUp;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
@@ -22,7 +23,7 @@ public class UserInterface {
         init();
 
         while (true) {
-            System.out.println("Dealership Menu");
+            System.out.println("\nDealership Menu");
             System.out.println("[0] EXIT");
             System.out.println("[1] EXPLORE THE COLLECTION");
             System.out.println("[2] SEARCH BY MAKE/MODEL");
@@ -34,16 +35,15 @@ public class UserInterface {
             System.out.println("[8] ADD TO THE COLLECTION");
             System.out.println("[9] REMOVE FROM THE COLLECTION");
             System.out.println("[10] PURCHASE A VEHICLE");
-            System.out.println("[11] LEASE A VEHICLE");
+            System.out.println("[11] LEASE A VEHICLE\n");
 
-            System.out.println();
             System.out.println("Please Enter Your Choice:");
             choice = scanner.nextLine();
 
 
             switch (choice) {
                 case "0":
-                    break;
+                    return;
                 case "1":
                     processGetAllVehiclesRequest();
                     break;
@@ -81,7 +81,13 @@ public class UserInterface {
                     break;
 
                 case "10":
+                    processSellVehicleRequest();
+                    break;
+
                 case "11":
+                    processLeaseVehicleRequest();
+                    break;
+
                 default:
                     System.out.println(" Please Enter a Valid Input.");
                     break;
@@ -94,8 +100,21 @@ public class UserInterface {
     }
 
     private void displayVehicles(List<Vehicle> vehicles) {
+        System.out.println("                                              OUR COLLECTION");
+        System.out.println("=".repeat(110));
+        System.out.println();
+
+        System.out.printf(
+                "%-8s %-6s %-16s %-17s %-10s %-12s %12s %15s%n",
+                "VIN", "YEAR", "MAKE", "MODEL",
+                "TYPE", "COLOR", "MILEAGE", "PRICE"
+        );
+
+        System.out.println("-".repeat(110));
+
         for (Vehicle vehicle : vehicles) {
-            System.out.printf("%d|%d|%s|%s|%s|%s|%d|%s%n",
+            System.out.printf(
+                    "%-8d %-6d %-16s %-17s %-10s %-12s %,12d $%,14.2f%n",
                     vehicle.getVin(),
                     vehicle.getYear(),
                     vehicle.getMake(),
@@ -104,8 +123,10 @@ public class UserInterface {
                     vehicle.getColor(),
                     vehicle.getOdometer(),
                     vehicle.getPrice().setScale(2, RoundingMode.HALF_UP));
-
         }
+
+        System.out.println("-".repeat(110));
+        System.out.println("                                               END OF COLLECTION");
     }
 
     private void processGetAllVehiclesRequest() {
@@ -212,6 +233,108 @@ public class UserInterface {
             } else {
                 DealershipFileManager.saveDealership(dealership);
             }
+    }
+
+    private void processSellVehicleRequest() throws IOException {
+        ContractDataManager contractDataManager = new ContractDataManager();
+        String contractDate = LocalDate.now().toString();
+        Vehicle selectedVehicle = null;
+        boolean financingOption;
+
+
+        int userInput = getValidInt("Enter VIN of the vehicle:");
+
+        for( Vehicle vehicle : dealership.getAllVehicles()){
+            if( userInput == vehicle.getVin()){
+                selectedVehicle = vehicle;
+                break;
+            }
+        }
+        if (selectedVehicle == null){
+            System.out.println("Vehicle not found in our collection!");
+            return;
+        }
+
+        System.out.println("Enter Name:");
+        String name = scanner.nextLine();
+        System.out.println("Enter Email:");
+        String email = scanner.nextLine();
+
+        System.out.println("Would you like to finance this vehicle? (Y/N):");
+        String financeInput = scanner.nextLine();
+
+        if(financeInput.equalsIgnoreCase("Y")) {
+            financingOption = true;
+
+        } else if (financeInput.equalsIgnoreCase("N")) {
+            financingOption = false;
+        } else {
+            System.out.println("Please enter valid choice (Y/N).");
+            return;
+        }
+
+        SalesContract sale = new SalesContract(
+                contractDate,
+                name,
+                email,
+                selectedVehicle,
+                financingOption);
+
+        boolean contractSaved = contractDataManager.saveContract(sale);
+
+        if(contractSaved) {
+            dealership.removeVehicle(selectedVehicle);
+            DealershipFileManager.saveDealership(dealership);
+
+            System.out.println("Vehicle successfully Sold!");
+        }
+    }
+
+    private void processLeaseVehicleRequest() throws IOException {
+        ContractDataManager contractDataManager = new ContractDataManager();
+        String contractDate = LocalDate.now().toString();
+        Vehicle selectedVehicle = null;
+
+        int userInput = getValidInt("Enter VIN of the vehicle:");
+
+        for (Vehicle vehicle : dealership.getAllVehicles()) {
+            if (userInput == vehicle.getVin()) {
+                selectedVehicle = vehicle;
+                break;
+            }
+        }
+
+        if (selectedVehicle == null) {
+            System.out.println("Vehicle not found in our collection!");
+            return;
+        }
+
+
+        System.out.println("Enter Name:");
+        String name = scanner.nextLine();
+
+        System.out.println("Enter Email:");
+        String email = scanner.nextLine();
+
+
+        LeaseContract lease = new LeaseContract(
+                contractDate,
+                name,
+                email,
+                selectedVehicle
+        );
+
+
+        boolean contractSaved = contractDataManager.saveContract(lease);
+
+
+        if (contractSaved) {
+            dealership.removeVehicle(selectedVehicle);
+            DealershipFileManager.saveDealership(dealership);
+
+            System.out.println("Vehicle successfully leased!");
+        }
+
     }
 
     //HELPER METHODS FOR INPUT VALIDATIONS

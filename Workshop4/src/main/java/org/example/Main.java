@@ -40,6 +40,42 @@ public class Main {
         System.out.println("Monthly Payment: $" + testLease.getMonthlyPayment());
 
          */
+        /*Vehicle testVehicle = new Vehicle(
+                12345,
+                2026,
+                "Toyota",
+                "Camry",
+                VehicleType.SEDAN,
+                "Black",
+                50000,
+                new BigDecimal("20000.00")
+        );
+
+// Create a sales contract
+        SalesContract testSale = new SalesContract(
+                "2026-11-21",
+                "Test Customer",
+                "test@email.com",
+                testVehicle,
+                true
+        );
+
+// Create a lease contract
+        LeaseContract testLease = new LeaseContract(
+                "2026-11-21",
+                "Lease Customer",
+                "lease@email.com",
+                testVehicle
+        );
+
+// Create the ContractDataManager
+        ContractDataManager contractManager = new ContractDataManager();
+
+// Save both contracts
+        contractManager.saveContract(testSale);
+        contractManager.saveContract(testLease);
+
+        System.out.println("========== CONTRACT TEST COMPLETE ==========");*/
 
         Scanner scanner = new Scanner(System.in);
         UserInterface ui = new UserInterface();

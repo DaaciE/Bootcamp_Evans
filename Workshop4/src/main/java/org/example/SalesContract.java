@@ -25,6 +25,37 @@ public class SalesContract extends Contract {
         }
     }
 
+    public boolean isFinancingOption() {
+        return financingOption;
+    }
+
+    public void setFinancingOption(boolean financingOption) {
+        this.financingOption = financingOption;
+    }
+
+    public BigDecimal getRecordingFee() {
+        return recordingFee;
+    }
+
+    public void setRecordingFee(BigDecimal recordingFee) {
+        this.recordingFee = recordingFee;
+    }
+
+    public BigDecimal getSalesTax() {
+        return salesTax;
+    }
+
+    public void setSalesTax(BigDecimal salesTax) {
+        this.salesTax = salesTax;
+    }
+
+    public BigDecimal getProcessingFee() {
+        return processingFee;
+    }
+
+    public void setProcessingFee(BigDecimal processingFee) {
+        this.processingFee = processingFee;
+    }
 
     @Override
     public BigDecimal getTotalPrice() {

@@ -26,47 +26,7 @@ public class Main {
                     vehicle.getOdometer(),
                     vehicle.getPrice());
         } */
-        //Scanner scanner = new Scanner(System.in);
-        //UserInterface ui = new UserInterface();
-        //ui.display();
-
-        Vehicle testVehicle = new Vehicle(
-                12345,
-                2020,
-                "Toyota",
-                "Camry",
-                VehicleType.SEDAN,
-                "Black",
-                50000,
-                new BigDecimal("20000.00")
-        );
-
-        SalesContract testSale = new SalesContract(
-                "2026-11-21",
-                "Test Customer",
-                "test@email.com",
-                testVehicle,
-                false
-        );
-
-        Vehicle testVehicle2 = new Vehicle(
-                12345,
-                2026,
-                "Toyota",
-                "Camry",
-                VehicleType.SEDAN,
-                "Black",
-                50000,
-                new BigDecimal("20000.00")
-        );
-
-        LeaseContract testLease = new LeaseContract(
-                "2026-11-21",
-                "Test Customer",
-                "test@email.com",
-                testVehicle
-        );
-
+        /*
         System.out.println("========== SALES CONTRACT TEST ==========");
         System.out.println("Vehicle Price: $" + testVehicle.getPrice());
         System.out.println("Total Price: $" + testSale.getTotalPrice());
@@ -78,6 +38,12 @@ public class Main {
         System.out.println("Lease Fee: $" + testLease.getLeaseFee());
         System.out.println("Total Lease Price: $" + testLease.getTotalPrice());
         System.out.println("Monthly Payment: $" + testLease.getMonthlyPayment());
+
+         */
+
+        Scanner scanner = new Scanner(System.in);
+        UserInterface ui = new UserInterface();
+        ui.display();
 
     }
 }
